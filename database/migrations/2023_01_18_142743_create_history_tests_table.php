@@ -19,8 +19,8 @@ return new class extends Migration
             $table->foreignId('session_id')->constrained()->cascadeOnDelete();
             $table->integer('correct_answer');
             $table->integer('wrong_answer');
-            $table->timestamp('start_at');
-            $table->timestamp('finish_at');
+            $table->timestamp('start_at')->nullable();
+            $table->timestamp('finish_at')->nullable();
             $table->timestamps();
         });
     }
