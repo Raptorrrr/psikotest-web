@@ -16,10 +16,10 @@ return new class extends Migration
         Schema::create('questions', function (Blueprint $table) {
             $table->id();
             $table->foreignId('session_id')->nullable()->constrained()->nullOnDelete();
-            $table->text('question');
+            $table->text('question')->nullable();
             $table->string('image')->nullable();
             $table->integer('order');
-            $table->json('correct_answer');
+            $table->json('correct_answer')->nullable();
             $table->timestamps();
         });
     }
