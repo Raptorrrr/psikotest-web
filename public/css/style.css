@@ -1,0 +1,10 @@
+.table > thead > tr > th {
+    background-color: #9368E9;
+    color: #FFFFFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.card .table tbody td:last-child, .card .table thead th:last-child {
+    display: none;
+}
