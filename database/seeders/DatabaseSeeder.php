@@ -1,6 +1,8 @@
 <?php
+
 namespace Database\Seeders;
 
+use App\Models\QuestionChoice;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 
@@ -13,6 +15,14 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        $this->call([UsersTableSeeder::class]);
+        $this->call([
+            UsersTableSeeder::class,
+            TypeSeeder::class,
+            SessionSeeder::class,
+            QuestionCFITSeeder::class,
+            QuestionSKBSeeder::class,
+            QuestionEPPSSeeder::class,
+            QuestionCFITChoiceSeeder::class
+        ]);
     }
 }
