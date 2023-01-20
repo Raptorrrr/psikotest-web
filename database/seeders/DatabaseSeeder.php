@@ -3,6 +3,7 @@
 namespace Database\Seeders;
 
 use App\Models\QuestionChoice;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Database\Seeder;
 

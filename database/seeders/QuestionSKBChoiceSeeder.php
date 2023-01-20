@@ -131,6 +131,8 @@ class QuestionSKBChoiceSeeder extends Seeder
                 }
             }
         }
+
+        dump('Question Choice SKB : ' . QuestionChoice::query()->whereHas('question.session.type', fn ($q) => $q->where('name', 'SKB'))->count());
     }
     protected function storeData($id_soal, $pilihan, $nilai, $kolom)
     {

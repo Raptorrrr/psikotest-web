@@ -35,6 +35,8 @@ class QuestionCFITChoiceSeeder extends Seeder
                 $this->storeData($id_soal, $pilihan, 3, $order);
             }
         }
+
+        dump('Question Choice CFIT : ' . QuestionChoice::query()->whereHas('question.session.type', fn ($q) => $q->where('name', 'CFIT'))->count());
     }
 
     protected function storeData($id_soal, $pilihan, $urutanPil, $order)

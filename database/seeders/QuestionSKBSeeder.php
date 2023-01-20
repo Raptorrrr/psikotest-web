@@ -110,5 +110,7 @@ class QuestionSKBSeeder extends Seeder
                 Question::query()->create($questions);
             }
         }
+
+        dump('Question SKB : ' . Question::query()->whereHas('session.type', fn ($q) => $q->where('name', 'SKB'))->count());
     }
 }

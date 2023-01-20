@@ -10,13 +10,11 @@ class QuestionEPPSSeeder extends Seeder
 {
     /**
      * Run the database seeds.
-     * 
+     *
      * @return void
      */
     public function run()
     {
-
-
         for ($no = 0; $no < 225; $no++) {
             $questions = [
                 // SKB SESI 1
@@ -28,5 +26,7 @@ class QuestionEPPSSeeder extends Seeder
             ];
             Question::query()->create($questions);
         }
+
+        dump('Question EPPS : ' . Question::query()->whereHas('session.type', fn ($q) => $q->where('name', 'EPPS'))->count());
     }
 }

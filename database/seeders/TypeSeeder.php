@@ -33,5 +33,7 @@ class TypeSeeder extends Seeder
         foreach ($types as $type) {
             Type::query()->create($type);
         };
+
+        dump('Tipe : ' . Type::query()->count());
     }
 }

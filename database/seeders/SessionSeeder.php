@@ -72,5 +72,7 @@ class SessionSeeder extends Seeder
         foreach ($sessions as $session) {
             Session::query()->create($session);
         };
+
+        dump('Session : ' . Session::query()->count());
     }
 }

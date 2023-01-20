@@ -541,5 +541,7 @@ class QuestionEPPSChoiceSeeder extends Seeder
                 QuestionChoice::query()->create($question);
             };
         }
+
+        dump('Question Choice EPPS : ' . QuestionChoice::query()->whereHas('question.session.type', fn ($q) => $q->where('name', 'EPPS'))->count());
     }
 }

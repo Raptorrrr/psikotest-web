@@ -375,5 +375,7 @@ class QuestionCFITSeeder extends Seeder
         foreach ($questions as $question) {
             Question::query()->create($question);
         };
+
+        dump('Question CFIT : ' . Question::query()->whereHas('session.type', fn ($q) => $q->where('name', 'CFIT'))->count());
     }
 }
