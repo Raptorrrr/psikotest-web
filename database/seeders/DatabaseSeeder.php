@@ -22,7 +22,9 @@ class DatabaseSeeder extends Seeder
             QuestionCFITSeeder::class,
             QuestionSKBSeeder::class,
             QuestionEPPSSeeder::class,
-            QuestionCFITChoiceSeeder::class
+            QuestionCFITChoiceSeeder::class,
+            QuestionSKBChoiceSeeder::class,
+            QuestionEPPSChoiceSeeder::class
         ]);
     }
 }
