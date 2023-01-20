@@ -9,6 +9,14 @@ use \Illuminate\Http\RedirectResponse;
 
 class TypeController extends Controller
 {
+    protected function rules(): array
+    {
+        return [
+            'name' => ['required', 'string'],
+            'intro' => ['nullable'],
+        ];
+    }
+
     public function index(): View
     {
         return view('pages.setting.question-management.type.index', [
@@ -18,9 +26,11 @@ class TypeController extends Controller
 
     public function store(Request $request): RedirectResponse
     {
+        $filtered = $request->validate($this->rules());
+
         $type = Type::query()->create([
-            'name' => $request->name,
-            'intro' => $request->intro,
+            'name' => $filtered['name'],
+            'intro' => $filtered['intro'],
         ]);
 
         return redirect()->route('setting.type.index');
@@ -28,8 +38,10 @@ class TypeController extends Controller
 
     public function update(Request $request, Type $type): RedirectResponse
     {
-        $type->name = $request->name;
-        $type->intro = $request->intro;
+        $filtered = $request->validate($this->rules());
+
+        $type->name = $filtered['name'];
+        $type->intro = $filtered['intro'];
         $type->save();
 
         return redirect()->route('setting.type.index');

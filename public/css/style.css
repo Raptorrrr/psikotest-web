@@ -13,6 +13,7 @@
     flex: 1 1 auto;
 }
 
+/* Main Color */
 .text-main {
     color: #9368E9 !important;
 }
@@ -40,7 +41,12 @@
 
 .btn-main:hover {
     border-color: #7C59C2;
-    color: #7C59C2;
+    color: #FFFFFF;
+}
+
+.btn.btn-fill:hover, .btn.btn-fill:focus, .btn.btn-fill:active, .btn.btn-fill.active, .open>.btn.btn-fill.dropdown-toggle {
+    background-color: #7C59C2;
+    color: #FFFFFF;
 }
 
 /* Pagination */

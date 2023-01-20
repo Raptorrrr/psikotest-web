@@ -12,11 +12,11 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="name">{{ __('Tipe Soal') }}</label>
-                        <input type="text" class="form-control" name="name" placeholder="Tipe Soal">
+                        <input type="text" class="form-control" name="name" placeholder="Masukkan Tipe Soal">
                     </div>
                     <div class="form-group">
                         <label for="intro">{{ __('Intro') }}</label>
-                        <textarea name="intro" class="form-control" id="ckeditor-create" placeholder="Intro" rows="3"></textarea>
+                        <textarea name="intro" class="form-control" id="ckeditor-create" placeholder="Masukkan Intro" rows="3"></textarea>
                         @push('js')
                             <script>
                                 ClassicEditor

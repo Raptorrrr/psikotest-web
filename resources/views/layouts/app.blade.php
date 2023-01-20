@@ -78,59 +78,23 @@
     <script src="{{ asset('light-bootstrap/js/light-bootstrap-dashboard.js?v=2.0.0') }}" type="text/javascript"></script>
     <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('light-bootstrap/js/demo.js') }}"></script>
-    @stack('js')
     <script>
-      $(document).ready(function () {
+        function showNotification(from, align) {
+            color = Math.floor((Math.random() * 4) + 1);
 
-        $('#facebook').sharrre({
-          share: {
-            facebook: true
-          },
-          enableHover: false,
-          enableTracking: false,
-          enableCounter: false,
-          click: function(api, options) {
-            api.simulateClick();
-            api.openPopup('facebook');
-          },
-          template: '<i class="fab fa-facebook-f"></i> Facebook',
-          url: 'https://light-bootstrap-dashboard-laravel.creative-tim.com/login'
-        });
+            $.notify({
+                icon: "nc-icon nc-app",
+                message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
 
-        $('#google').sharrre({
-          share: {
-            googlePlus: true
-          },
-          enableCounter: false,
-          enableHover: false,
-          enableTracking: true,
-          click: function(api, options) {
-            api.simulateClick();
-            api.openPopup('googlePlus');
-          },
-          template: '<i class="fab fa-google-plus"></i> Google',
-          url: 'https://light-bootstrap-dashboard-laravel.creative-tim.com/login'
-        });
-
-        $('#twitter').sharrre({
-          share: {
-            twitter: true
-          },
-          enableHover: false,
-          enableTracking: false,
-          enableCounter: false,
-          buttons: {
-            twitter: {
-              via: 'CreativeTim'
-            }
-          },
-          click: function(api, options) {
-            api.simulateClick();
-            api.openPopup('twitter');
-          },
-          template: '<i class="fab fa-twitter"></i> Twitter',
-          url: 'https://light-bootstrap-dashboard-laravel.creative-tim.com/login'
-        });
-      });
+            }, {
+                type: type[color],
+                timer: 8000,
+                placement: {
+                    from: from,
+                    align: align
+                }
+            });
+        }
     </script>
+    @stack('js')
 </html>

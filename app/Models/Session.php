@@ -7,6 +7,13 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property $type_id
+ * @property $session
+ * @property $time
+ * @property $count_answer
+ */
+
 class Session extends Model
 {
     use HasFactory;
