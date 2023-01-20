@@ -1,6 +1,8 @@
 @extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
+    @include('components.error-alert')
+
     <div class="row justify-content-end py-2">
         <div class="col-md-4">
             <form role="search">
@@ -18,8 +20,6 @@
             </button>
         </div>
     </div>
-
-    @include('components.error-alert')
 
     <div class="row">
         <div class="col-md-12">

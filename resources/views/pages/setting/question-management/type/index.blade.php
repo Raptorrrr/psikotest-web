@@ -6,6 +6,8 @@
 @extends('pages.setting.question-management.setting-layout', ['activePage' => 'type', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
+    @include('components.error-alert')
+
     <div class="row justify-content-end py-2">
         <div class="col-md-4">
             <form role="search">
