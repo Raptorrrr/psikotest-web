@@ -1,4 +1,4 @@
-<!-- 
+<!--
 =========================================================
  Light Bootstrap Dashboard - v2.0.1
 =========================================================
@@ -30,6 +30,9 @@
         <link href="{{ asset('light-bootstrap/css/light-bootstrap-dashboard.css?v=2.0.0') }} " rel="stylesheet" />
         <!-- CSS Just for demo purpose, don't include it in your project -->
         <link href="{{ asset('light-bootstrap/css/demo.css') }}" rel="stylesheet" />
+        <!-- Custom CSS -->
+        <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        @stack('css')
     </head>
 
     <body>
@@ -42,12 +45,18 @@
 
             <div class="@if (auth()->check() && request()->route()->getName() != "") main-panel @endif">
                 @include('layouts.navbars.navbar')
-                @yield('content')
+                <div class="content">
+                    <div class="container-fluid">
+                        <div class="card p-3">
+                            @yield('content')
+                        </div>
+                    </div>
+                </div>
                 @include('layouts.footer.nav')
             </div>
 
         </div>
-       
+
 
 
     </body>
@@ -72,7 +81,7 @@
     @stack('js')
     <script>
       $(document).ready(function () {
-        
+
         $('#facebook').sharrre({
           share: {
             facebook: true

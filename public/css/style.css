@@ -1,0 +1,71 @@
+.table > thead > tr > th {
+    background-color: #9368E9;
+    color: #FFFFFF;
+    padding-top: 15px;
+    padding-bottom: 15px;
+}
+
+.card .table tbody td:last-child, .card .table thead th:last-child {
+    display: flex;
+}
+
+.flex-auto {
+    flex: 1 1 auto;
+}
+
+.text-main {
+    color: #9368E9 !important;
+}
+
+.bg-main {
+    background-color: #9368E9 !important;
+}
+
+.btn-main.btn-fill {
+    color: #FFFFFF;
+    background-color: #9368E9;
+    opacity: 1;
+}
+
+.btn-main.btn-fill:hover {
+    color: #FFFFFF;
+    background-color: #7C59C2;
+    opacity: 1;
+}
+
+.btn-main {
+    border-color: #9368E9;
+    color: #9368E9;
+}
+
+.btn-main:hover {
+    border-color: #7C59C2;
+    color: #7C59C2;
+}
+
+/* Pagination */
+.page-link {
+    color: #9368E9;
+}
+
+.page-item.active .page-link {
+    z-index: 2;
+    color: #fff;
+    background-color: #9368E9;
+    border-color: #9368E9;
+}
+
+/* Pagination */
+
+.fa-100 {
+    width: 100px; font-size: 100px
+}
+
+.modal.modal-large .modal-dialog {
+    max-width: 80%;
+    margin: 0 auto;
+}
+
+.ck-editor__editable_inline {
+    min-height: 200px;
+}
