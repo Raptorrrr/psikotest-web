@@ -1,10 +1,12 @@
 <?php
 
+use App\Http\Controllers\DetailCFIT;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HistoryTestController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\QuestionController;
+use App\Models\HistoryTest;
 
 /*
 |--------------------------------------------------------------------------
@@ -27,8 +29,14 @@ Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('das
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('history-test', [HistoryTestController::class, 'index'])->name('history-test.index');
-    Route::prefix('setting')->name('setting.')->group(function () {
 
+    Route::prefix('history-test/detail')->name('history-test.detail.')->group(function () {
+        Route::get('cfit/{user}', [HistoryTestController::class, 'detailCFIT'])->name('cfit');
+        Route::get('skb/{user}', [HistoryTestController::class, 'detailSKB'])->name('skb');
+        Route::get('epps/{user}', [HistoryTestController::class, 'detailEPPS'])->name('epps');
+    });
+
+    Route::prefix('setting')->name('setting.')->group(function () {
         Route::prefix('type')->name('type.')->group(function () {
             Route::get('', [TypeController::class, 'index'])->name('index');
             Route::post('', [TypeController::class, 'store'])->name('store');
@@ -51,8 +59,8 @@ Route::group(['middleware' => 'auth'], function () {
         });
     });
 
-//    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//    Route::patch('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-//    Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-//    Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
+    //    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
+    //    Route::patch('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
+    //    Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
+    //    Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
 });
