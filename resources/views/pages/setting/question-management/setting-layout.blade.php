@@ -3,7 +3,7 @@
 @section('content')
     <ul class="nav nav-tabs">
         <li class="nav-item">
-            <a class="nav-link @if($activePage == 'session') active @endif" href="{{ route('setting.session.index') }}">Sesi</a>
+            <a class="nav-link @if($activePage == 'session') active @endif" href="{{ route('setting.session.index') }}">Sesi dan Pertanyaan</a>
         </li>
         <li class="nav-item">
             <a class="nav-link @if($activePage == 'type') active @endif" href="{{ route('setting.type.index') }}">Tipe</a>

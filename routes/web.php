@@ -5,6 +5,7 @@ use App\Http\Controllers\HistoryTestController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\QuestionController;
+use App\Http\Controllers\QuestionChoiceController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +30,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('history-test', [HistoryTestController::class, 'index'])->name('history-test.index');
     Route::prefix('setting')->name('setting.')->group(function () {
 
+        // Type
         Route::prefix('type')->name('type.')->group(function () {
             Route::get('', [TypeController::class, 'index'])->name('index');
             Route::post('', [TypeController::class, 'store'])->name('store');
@@ -36,6 +38,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::delete('{type}', [TypeController::class, 'destroy'])->name('destroy');
         });
 
+        // Session
         Route::prefix('session')->name('session.')->group(function () {
             Route::get('', [SessionController::class, 'index'])->name('index');
             Route::post('', [SessionController::class, 'store'])->name('store');
@@ -43,6 +46,7 @@ Route::group(['middleware' => 'auth'], function () {
             Route::delete('{session}', [SessionController::class, 'destroy'])->name('destroy');
         });
 
+        // Question
         Route::prefix('{session}/question')->name('question.')->group(function () {
             Route::get('', [QuestionController::class, 'index'])->name('index');
             Route::get('create', [QuestionController::class, 'create'])->name('create');
@@ -50,6 +54,14 @@ Route::group(['middleware' => 'auth'], function () {
             Route::get('{question}', [QuestionController::class, 'edit'])->name('edit');
             Route::put('{question}', [QuestionController::class, 'update'])->name('update');
             Route::delete('{question}', [QuestionController::class, 'destroy'])->name('destroy');
+        });
+
+        // Question Choice
+        Route::prefix('{session}/question/{question}/choice')->name('question.choice.')->group(function () {
+            Route::get('', [QuestionChoiceController::class, 'index'])->name('index');
+            Route::post('', [QuestionChoiceController::class, 'store'])->name('store');
+            Route::put('{questionChoice}', [QuestionChoiceController::class, 'update'])->name('update');
+            Route::delete('{questionChoice}', [QuestionChoiceController::class, 'destroy'])->name('destroy');
         });
     });
 

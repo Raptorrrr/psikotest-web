@@ -8,6 +8,15 @@ use Illuminate\Database\Eloquent\Casts\Attribute;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 
+/**
+ * @property $id
+ * @property $session_id
+ * @property $question
+ * @property $image
+ * @property $order
+ * @property $correct_answer
+ */
+
 class Question extends Model
 {
     use HasFactory;
