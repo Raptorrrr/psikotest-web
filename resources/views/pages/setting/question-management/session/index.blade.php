@@ -41,7 +41,10 @@
                         <td>{{ $session->time / 60 }}</td>
                         <td>{{ $session->count_answer }}</td>
                         <td class="justify-content-end">
-                            <button class="btn btn-main" data-toggle="modal" data-target="#editModal-{{$key}}">
+                            <a class="btn btn-success" href="{{ URL::route('setting.question.index', ['session' => $session->id]) }}">
+                                <i class="fa fa-cogs"></i>
+                            </a>
+                            <button class="btn btn-main ml-2" data-toggle="modal" data-target="#editModal-{{$key}}">
                                 <i class="fa fa-pencil"></i>
                             </button>
                             <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteModal-{{$key}}">

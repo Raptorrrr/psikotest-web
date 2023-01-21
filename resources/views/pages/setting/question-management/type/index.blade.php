@@ -1,8 +1,3 @@
-@push('css')
-    {{-- CKEditor CDN --}}
-    <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
-@endpush
-
 @extends('pages.setting.question-management.setting-layout', ['activePage' => 'type', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')

@@ -24,7 +24,7 @@ class SessionController extends Controller
     public function index(): View
     {
         return view('pages.setting.question-management.session.index', [
-            'sessions' => Session::query()->paginate(10)->withQueryString(),
+            'sessions' => Session::query()->orderBy('type_id', 'asc')->paginate(10)->withQueryString(),
             'types' => Type::query()->get(),
         ]);
     }

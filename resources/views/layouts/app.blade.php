@@ -32,6 +32,7 @@
         <link href="{{ asset('light-bootstrap/css/demo.css') }}" rel="stylesheet" />
         <!-- Custom CSS -->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
+        @vite(['resources/js/app.js'])
         @stack('css')
     </head>
 
@@ -61,6 +62,7 @@
 
     </body>
         <!--   Core JS Files   -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <script src="{{ asset('light-bootstrap/js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('light-bootstrap/js/core/popper.min.js') }}" type="text/javascript"></script>
     <script src="{{ asset('light-bootstrap/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
@@ -78,6 +80,8 @@
     <script src="{{ asset('light-bootstrap/js/light-bootstrap-dashboard.js?v=2.0.0') }}" type="text/javascript"></script>
     <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
     <script src="{{ asset('light-bootstrap/js/demo.js') }}"></script>
+    {{-- CKEditor CDN --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
     <script>
         function showNotification(from, align) {
             color = Math.floor((Math.random() * 4) + 1);

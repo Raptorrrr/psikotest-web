@@ -43,9 +43,11 @@ Route::group(['middleware' => 'auth'], function () {
             Route::delete('{session}', [SessionController::class, 'destroy'])->name('destroy');
         });
 
-        Route::prefix('question')->name('question.')->group(function () {
+        Route::prefix('{session}/question')->name('question.')->group(function () {
             Route::get('', [QuestionController::class, 'index'])->name('index');
+            Route::get('create', [QuestionController::class, 'create'])->name('create');
             Route::post('', [QuestionController::class, 'store'])->name('store');
+            Route::get('{question}', [QuestionController::class, 'edit'])->name('edit');
             Route::put('{question}', [QuestionController::class, 'update'])->name('update');
             Route::delete('{question}', [QuestionController::class, 'destroy'])->name('destroy');
         });
