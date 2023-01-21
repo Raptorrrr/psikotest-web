@@ -46,6 +46,10 @@
 }
 
 /* Main Color */
+a, a:hover, a:focus {
+    color: #9368E9;
+}
+
 .text-main {
     color: #9368E9 !important;
 }
