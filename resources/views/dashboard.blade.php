@@ -3,13 +3,13 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        AAA
+        pp
     </div>
 </div>
 @endsection
 
 @push('js')
-    <script type="text/javascript">
+<script type="text/javascript">
     $(document).ready(function() {
         // Javascript method's body can be found in assets/js/demos.js
         demo.initDashboardPageCharts();
