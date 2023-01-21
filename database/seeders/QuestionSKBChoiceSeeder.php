@@ -139,9 +139,9 @@ class QuestionSKBChoiceSeeder extends Seeder
         for ($pil = 0; $pil < 5; $pil++) {
             $questions = [
                 'question_id' => $id_soal,
-                'choice' => $pilihan[$kolom][$pil],
-                'value' => $nilai[0][$pil],
-                'order'  => $pil
+                'choice' => $nilai[0][$pil],
+                'value' => $pilihan[$kolom][$pil],
+                'order'  => $pil + 1
             ];
             QuestionChoice::query()->create($questions);
         }

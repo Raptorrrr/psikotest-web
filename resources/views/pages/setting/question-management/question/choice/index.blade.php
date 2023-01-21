@@ -4,7 +4,7 @@
     <div class="row justify-content-end py-2">
         <div class="col-md-6">
             <div class="input-group">
-                <a class="btn btn-default btn-fill" href="{{ URL::route('setting.session.index') }}">
+                <a class="btn btn-default btn-fill" href="{{ route('setting.question.index', ['session' => $session->id]) }}">
                     <i class="fa fa-arrow-left"></i>
                     Kembali
                 </a>
@@ -18,10 +18,10 @@
             </div>
         </div>
         <div class="col-md">
-            <a class="btn btn-main btn-fill pull-right" href="{{ route('setting.question.create', ['session' => $session->id]) }}">
+            <button type="button" class="btn btn-main btn-fill pull-right" data-toggle="modal" data-target="#createModal">
                 <i class="fa fa-plus"></i>
-                Tambah Pertanyaan
-            </a>
+                Tambah Pilihan Jawaban
+            </button>
         </div>
     </div>
 
@@ -30,41 +30,50 @@
             <table class="table table-hover table-striped mt-2">
                 <thead>
                 <th>No</th>
-                <th>Tipe Soal</th>
-                <th>Sesi</th>
-                <th>Nomor Soal</th>
+                <th>Urutan Pilihan</th>
+                <th>Pilihan</th>
+                <th>Keterangan</th>
                 <th class="justify-content-end">Action</th>
                 </thead>
                 <tbody>
-                @foreach($questions as $key => $question)
+                @foreach($questionChoices as $key => $choice)
                     <tr>
                         <td style="width: 5%">{{ $key+1 }}</td>
-                        <td>{{ $question->session->type->name }}</td>
-                        <td>{{ $question->session->session }}</td>
-                        <td>{{ $question->order }}</td>
+                        <td>{{ $choice->order }}</td>
+                        <td>{{ $choice->choice }}</td>
+                        <td>{{ $choice->value }}</td>
                         <td class="justify-content-end">
-                            <a class="btn btn-success" href="{{ URL::route('setting.question.choice.index', ['session' => $session->id, 'question' => $question->id]) }}">
-                                <i class="fa fa-cogs"></i>
-                            </a>
-                            <a class="btn btn-main ml-2" href="{{ route('setting.question.edit', ['session' => $session->id, 'question' => $question->id]) }}">
+                            <button class="btn btn-main" data-toggle="modal" data-target="#editModal-{{$key}}">
                                 <i class="fa fa-pencil"></i>
-                            </a>
+                            </button>
                             <button class="btn btn-danger ml-2" data-toggle="modal" data-target="#deleteModal-{{$key}}">
                                 <i class="fa fa-trash"></i>
                             </button>
                         </td>
                     </tr>
 
+                    <!-- Start Edit Modal -->
+                    @include('pages.setting.question-management.question.choice.edit')
+                    <!--  End Edit Modal -->
+
                     <!-- Start Alert Delete -->
-                    @include('components.delete-modal', ['route' => route('setting.question.destroy', ['session' => $session->id, 'question' => $question->id])])
+                    @include('components.delete-modal', ['route' => route('setting.question.choice.destroy', [
+                        'session' => $session->id,
+                        'question' => $question->id,
+                        'questionChoice' => $choice->id
+                    ])])
                     <!--  End Alert Delete -->
                 @endforeach
                 </tbody>
             </table>
 
             <div class="pull-right">
-                {{ $questions->links("pagination::bootstrap-4") }}
+                {{ $questionChoices->links("pagination::bootstrap-4") }}
             </div>
+
+            <!-- Start Create Modal -->
+            @include('pages.setting.question-management.question.choice.create')
+            <!--  End Create Modal -->
         </div>
     </div>
 @endsection

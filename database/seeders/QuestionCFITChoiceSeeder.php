@@ -46,7 +46,7 @@ class QuestionCFITChoiceSeeder extends Seeder
                 'question_id' => $id_soal + 1,
                 'choice' => $pilihan[$urutanPil][$pil],
                 'value' => $pilihan[$urutanPil][$pil],
-                'order'  => $order[$pil],
+                'order'  => $order[$pil] + 1,
             ];
             QuestionChoice::query()->create($questions);
         }

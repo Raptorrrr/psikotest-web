@@ -34,7 +34,7 @@ Tip 2: you can also add an image using data-image tag
                 <div class="collapse @if($activeButton == 'setting') show @endif" id="laravelExamples">
                     <ul class="nav">
                         <li class="nav-item @if($activePage == 'user') active @endif">
-                            <a class="nav-link" href="{{route('setting.question.index')}}">
+                            <a class="nav-link" href="{{route('setting.session.index')}}">
                                 <i class="nc-icon nc-single-copy-04"></i>
                                 <p>{{ __("Kelola Soal") }}</p>
                             </a>

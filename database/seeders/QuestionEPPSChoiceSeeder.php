@@ -526,15 +526,15 @@ class QuestionEPPSChoiceSeeder extends Seeder
             $questions = [
                 [
                     'question_id' => $id_soal,
-                    'choice' => $pilihanA[$id_soal - 351],
-                    'value' => $nilai[0],
-                    'order'  => 0
+                    'choice' => $nilai[0],
+                    'value' => $pilihanA[$id_soal - 351],
+                    'order'  => 1
                 ],
                 [
                     'question_id' => $id_soal,
-                    'choice' => $pilihanB[$id_soal - 351],
-                    'value' => $nilai[1],
-                    'order'  => 1
+                    'choice' => $nilai[1],
+                    'value' => $pilihanB[$id_soal - 351],
+                    'order'  => 2
                 ]
             ];
             foreach ($questions as $question) {

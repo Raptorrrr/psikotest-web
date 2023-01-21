@@ -6,7 +6,7 @@
                 @method('PUT')
                 <div class="modal-header d-block">
                     <div class="card bg-main text-white p-3 mb-0">
-                        <h3 class="my-2 font-weight-bold">EDIT Sesi Soal</h3>
+                        <h3 class="my-2 font-weight-bold">Edit Sesi Soal</h3>
                         <p class="mb-2">Lorem ipsum dolor sit amet, consectetur adipisicing elit.</p>
                     </div>
                 </div>
