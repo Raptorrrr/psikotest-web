@@ -5,6 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Casts\Attribute;
 
 class HistoryTest extends Model
 {
@@ -20,6 +21,13 @@ class HistoryTest extends Model
         'start_at',
         'finish_at',
     ];
+
+    protected $appends = ['type'];
+
+    public function getTypeAttribute()
+    {
+        return $this->session->type->name;
+    }
 
     public function user(): BelongsTo
     {

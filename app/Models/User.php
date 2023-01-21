@@ -64,7 +64,7 @@ class User extends Authenticatable
         return $this->hasMany(UserAnswer::class);
     }
 
-    public function historyTestes(): HasMany
+    public function historyTests(): HasMany
     {
         return $this->hasMany(HistoryTest::class);
     }
