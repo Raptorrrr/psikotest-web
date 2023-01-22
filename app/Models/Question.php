@@ -26,6 +26,7 @@ class Question extends Model
         'session_id',
         'question',
         'image',
+        'is_import',
         'order',
         'correct_answer',
     ];
@@ -48,7 +49,7 @@ class Question extends Model
         return $this->belongsTo(Session::class);
     }
 
-    public function questions(): HasMany
+    public function choices(): HasMany
     {
         return $this->hasMany(QuestionChoice::class);
     }

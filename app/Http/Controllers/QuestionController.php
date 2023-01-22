@@ -16,9 +16,10 @@ class QuestionController extends Controller
     protected function rules(): array
     {
         return [
+            'type_question' => ['required', 'string'],
             'session_id' => ['required', Rule::exists('sessions', 'id')],
             'question' => ['nullable'],
-            'image' => ['nullable'],
+            'image' => ['nullable', 'image', 'max:2048'],
             'order' => ['required', 'integer'],
             'correct_answer' => ['nullable', 'array'],
             'correct_answer.*' => ['string'],
@@ -45,11 +46,14 @@ class QuestionController extends Controller
     public function store(Request $request, Session $session): RedirectResponse
     {
         $filtered = $request->validate($this->rules());
+        $filtered = $this->checkTypeQuestion($filtered);
+
+        $image_path = $this->storeImage($request, 'image', 'images/question/' . $session->type->name . '/' . $session->session);
 
         $question = Question::query()->create([
             'session_id' => $filtered['session_id'],
             'question' => $filtered['question'],
-            'image' => $filtered['image'] ?? null,
+            'image' => $image_path,
             'order' => $filtered['order'],
             'correct_answer' => $filtered['correct_answer'],
         ]);
@@ -68,9 +72,17 @@ class QuestionController extends Controller
     {
         $filtered = $request->validate($this->rules());
 
+        $filtered = $this->checkTypeQuestion($filtered);
+
+        if($filtered['image'] === null && $question->image !== null) {
+            $this->deleteImage($question, 'image');
+            $image_path = null;
+        } else
+            $image_path = $this->updateImage($request, 'image', 'images/question/' . $session->type->name . '/' . $session->session, $question, 'image');
+
         $question->session_id = $filtered['session_id'];
         $question->question = $filtered['question'];
-        $question->image = null;
+        $question->image = $image_path;
         $question->order = $filtered['order'];
         $question->correct_answer = $filtered['correct_answer'];
         $question->save();
@@ -80,8 +92,19 @@ class QuestionController extends Controller
 
     public function destroy(Session $session, Question $question): RedirectResponse
     {
+        $this->deleteImage($question, 'image');
         $question->delete();
 
         return redirect()->route('setting.question.index', ['session' => $session->id]);
+    }
+
+    public function checkTypeQuestion($filtered)
+    {
+        if($filtered['type_question'] === 'question_text')
+            $filtered['image'] = null;
+        else
+            $filtered['question'] = null;
+
+        return $filtered;
     }
 }

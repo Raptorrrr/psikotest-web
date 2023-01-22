@@ -1,4 +1,4 @@
-@extends('pages.result.detail.setting-layout', ['activePage' => 'epps', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'historyTests'])
+@extends('pages.result.detail.setting-layout', ['activePage' => 'epps', 'title' => 'Psikotes Biromarini', 'navName' => 'Question', 'activeButton' => 'historyTests'])
 
 @section('setting-content')
 <div class="row justify-content-end py-2">

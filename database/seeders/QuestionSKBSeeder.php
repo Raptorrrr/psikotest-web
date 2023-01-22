@@ -105,7 +105,7 @@ class QuestionSKBSeeder extends Seeder
                     'question' => $soal[$sesi - 5][$no],
                     'image' => null,
                     'order'  => $no + 1,
-                    'correct_answer' => json_encode([$jawaban[$sesi - 5][$no]]),
+                    'correct_answer' => [$jawaban[$sesi - 5][$no]],
                 ];
                 Question::query()->create($questions);
             }

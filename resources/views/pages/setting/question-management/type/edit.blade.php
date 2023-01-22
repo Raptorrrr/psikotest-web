@@ -12,6 +12,10 @@
                 </div>
                 <div class="modal-body">
                     <div class="form-group">
+                        <label for="order">{{ __('Urutan Tes') }}</label>
+                        <input type="number" class="form-control" name="order" min="0" placeholder="Masukkan Urutan Tes" value="{{ $type->order }}>
+                    </div>
+                    <div class="form-group">
                         <label for="name">{{ __('Tipe Soal') }}</label>
                         <input type="text" class="form-control" name="name" placeholder="Masukkan Tipe Soal" value="{{ $type->name }}">
                     </div>

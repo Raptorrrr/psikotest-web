@@ -18,14 +18,17 @@ class TypeSeeder extends Seeder
         $types = [
             [
                 'name' => 'CFIT',
+                'order' => 1,
                 'intro' => null
             ],
             [
                 'name' => 'SKB',
+                'order' => 2,
                 'intro' => null
             ],
             [
                 'name' => 'EPPS',
+                'order' => 3,
                 'intro' => null
             ]
         ];

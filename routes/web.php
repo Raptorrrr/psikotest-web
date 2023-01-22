@@ -6,8 +6,8 @@ use App\Http\Controllers\HistoryTestController;
 use App\Http\Controllers\TypeController;
 use App\Http\Controllers\SessionController;
 use App\Http\Controllers\QuestionController;
-use App\Models\HistoryTest;
 use App\Http\Controllers\QuestionChoiceController;
+use App\Http\Controllers\UserAnswerController;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,6 +29,11 @@ Auth::routes();
 Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
+    //User Test
+    Route::get('test/{slug}/{session}', [UserAnswerController::class, 'index'])->name('test.index');
+    Route::post('test/{slug}/{session}', [UserAnswerController::class, 'store'])->name('test.store');
+
+    //Admin
     Route::get('history-test', [HistoryTestController::class, 'index'])->name('history-test.index');
 
     Route::prefix('history-test/detail')->name('history-test.detail.')->group(function () {

@@ -5,13 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use \Illuminate\Http\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
 
 class TypeController extends Controller
 {
     protected function rules(): array
     {
         return [
+            'order' => ['required', 'integer'],
             'name' => ['required', 'string'],
             'intro' => ['nullable'],
         ];
@@ -29,6 +30,7 @@ class TypeController extends Controller
         $filtered = $request->validate($this->rules());
 
         $type = Type::query()->create([
+            'order' => $filtered['order'],
             'name' => $filtered['name'],
             'intro' => $filtered['intro'],
         ]);
@@ -40,6 +42,7 @@ class TypeController extends Controller
     {
         $filtered = $request->validate($this->rules());
 
+        $type->order = $filtered['order'];
         $type->name = $filtered['name'];
         $type->intro = $filtered['intro'];
         $type->save();

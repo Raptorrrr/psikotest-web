@@ -1,4 +1,4 @@
-@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
+@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotes Biromarini', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
     @include('components.error-alert')
@@ -30,7 +30,11 @@
                 <div class="form-group">
                     <label for="question">{{ __('Pertanyaan') }}</label>
                     <textarea name="question" class="form-control" id="ckeditor" placeholder="Masukkan Pertanyaan" rows="3"></textarea>
-                    <input type="file" class="form-control-file" id="image" style="display: none">
+                    <div class="text-center" id="preview-container" style="display: none">
+                        <img id="preview-image-before-upload" src="{{ asset('images/no-image.png') }}"
+                             alt="preview image" style="max-height: 500px;">
+                    </div>
+                    <input type="file" class="form-control-file" id="image" style="display: none" name="image">
                 </div>
 
                 <div class="form-group">
@@ -86,11 +90,13 @@
 
             function checkVal(type) {
                 if(type.value === 'question_text') {
+                    $("#preview-container").hide()
                     $("#image").hide()
                     $(".ck-editor").show()
                 }
                 else {
                     $(".ck-editor").hide()
+                    $("#preview-container").show()
                     $("#image").show()
                 }
             }

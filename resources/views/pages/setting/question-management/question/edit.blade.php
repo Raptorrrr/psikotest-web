@@ -1,4 +1,4 @@
-@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
+@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotes Biromarini', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
     @include('components.error-alert')
@@ -33,7 +33,11 @@
                     <textarea name="question" class="form-control" id="ckeditor" placeholder="Masukkan Pertanyaan" rows="3">
                         {!! $question->question !!}
                     </textarea>
-                    <input type="file" class="form-control-file" id="image" style="display: none">
+                    <div class="text-center" id="preview-container" style="display: none">
+                        <img id="preview-image-before-upload" src="{{ $question->image !== null ? Storage::url($question->image) : asset('images/no-image.png') }}"
+                             alt="preview image" style="max-height: 500px;">
+                    </div>
+                    <input type="file" class="form-control-file" id="image" name="image" style="display: none">
                 </div>
 
                 <div class="form-group">
@@ -72,6 +76,12 @@
 
     @push('js')
         <script>
+            $(document).ready(function (e) {
+                let val = {}
+                val.value = {!! json_encode($question->question) !!} === null ? 'question_image' : 'question_text'
+                checkVal(val)
+            });
+
             ClassicEditor
                 .create( document.querySelector( '#ckeditor'), {
                     toolbar: [ 'heading', 'bold', 'italic', 'outdent', 'indent', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
@@ -99,11 +109,13 @@
 
             function checkVal(type) {
                 if(type.value === 'question_text') {
+                    $("#preview-container").hide()
                     $("#image").hide()
                     $(".ck-editor").show()
                 }
                 else {
                     $(".ck-editor").hide()
+                    $("#preview-container").show()
                     $("#image").show()
                 }
             }

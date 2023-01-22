@@ -21,354 +21,404 @@ class QuestionCFITSeeder extends Seeder
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '1',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '2',
-                'correct_answer' => json_encode(['C'])
+                'correct_answer' => ['C']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '3',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '4',
-                'correct_answer' => json_encode(['D'])
+                'correct_answer' => ['D']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '5',
-                'correct_answer' => json_encode(['E'])
+                'correct_answer' => ['E']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '6',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '7',
-                'correct_answer' => json_encode(['D'])
+                'correct_answer' => ['D']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '8',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '9',
-                'correct_answer' => json_encode(['F'])
+                'correct_answer' => ['F']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '10',
-                'correct_answer' => json_encode(['C'])
+                'correct_answer' => ['C']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '11',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '12',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '1',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '13',
-                'correct_answer' => json_encode(['E'])
+                'correct_answer' => ['E']
             ],
             // CFIT SESI 2
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '1',
-                'correct_answer' => json_encode(['B', 'E'])
+                'correct_answer' => ['B', 'E']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '2',
-                'correct_answer' => json_encode(['A', 'E'])
+                'correct_answer' => ['A', 'E']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '3',
-                'correct_answer' => json_encode(['A', 'D'])
+                'correct_answer' => ['A', 'D']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '4',
-                'correct_answer' => json_encode(['C', 'E'])
+                'correct_answer' => ['C', 'E']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '5',
-                'correct_answer' => json_encode(['E', 'B'])
+                'correct_answer' => ['E', 'B']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '6',
-                'correct_answer' => json_encode(['A', 'D'])
+                'correct_answer' => ['A', 'D']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '7',
-                'correct_answer' => json_encode(['B', 'E'])
+                'correct_answer' => ['B', 'E']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '8',
-                'correct_answer' => json_encode(['B', 'E'])
+                'correct_answer' => ['B', 'E']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '9',
-                'correct_answer' => json_encode(['A', 'D'])
+                'correct_answer' => ['A', 'D']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '10',
-                'correct_answer' => json_encode(['B', 'D'])
+                'correct_answer' => ['B', 'D']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '11',
-                'correct_answer' => json_encode(['A', 'E'])
+                'correct_answer' => ['A', 'E']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '12',
-                'correct_answer' => json_encode(['C', 'D'])
+                'correct_answer' => ['C', 'D']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '13',
-                'correct_answer' => json_encode(['B', 'C'])
+                'correct_answer' => ['B', 'C']
             ],
             [
                 'session_id' => '2',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '14',
-                'correct_answer' => json_encode(['A', 'B'])
+                'correct_answer' => ['A', 'B']
             ],
             // CFIT SESI 3
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '1',
-                'correct_answer' => json_encode(['E'])
+                'correct_answer' => ['E']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '2',
-                'correct_answer' => json_encode(['E'])
+                'correct_answer' => ['E']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '3',
-                'correct_answer' => json_encode(['E'])
+                'correct_answer' => ['E']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '4',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '5',
-                'correct_answer' => json_encode(['C'])
+                'correct_answer' => ['C']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '6',
-                'correct_answer' => json_encode(['D'])
+                'correct_answer' => ['D']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '7',
-                'correct_answer' => json_encode(['E'])
+                'correct_answer' => ['E']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '8',
-                'correct_answer' => json_encode(['E'])
+                'correct_answer' => ['E']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '9',
-                'correct_answer' => json_encode(['A'])
+                'correct_answer' => ['A']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '10',
-                'correct_answer' => json_encode(['A'])
+                'correct_answer' => ['A']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '11',
-                'correct_answer' => json_encode(['F'])
+                'correct_answer' => ['F']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '12',
-                'correct_answer' => json_encode(['C'])
+                'correct_answer' => ['C']
             ],
             [
                 'session_id' => '3',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '13',
-                'correct_answer' => json_encode(['C'])
+                'correct_answer' => ['C']
             ],
             // CFIT SESI 4
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '1',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '2',
-                'correct_answer' => json_encode(['A'])
+                'correct_answer' => ['A']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '3',
-                'correct_answer' => json_encode(['D'])
+                'correct_answer' => ['D']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '4',
-                'correct_answer' => json_encode(['D'])
+                'correct_answer' => ['D']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '5',
-                'correct_answer' => json_encode(['A'])
+                'correct_answer' => ['A']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '6',
-                'correct_answer' => json_encode(['B'])
+                'correct_answer' => ['B']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '7',
-                'correct_answer' => json_encode(['C'])
+                'correct_answer' => ['C']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '8',
-                'correct_answer' => json_encode(['D'])
+                'correct_answer' => ['D']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '9',
-                'correct_answer' => json_encode(['A'])
+                'correct_answer' => ['A']
             ],
             [
                 'session_id' => '4',
                 'question' => null,
                 'image' => null,
+                'is_import' => 1,
                 'order'  => '10',
-                'correct_answer' => json_encode(['D'])
+                'correct_answer' => ['D']
             ]
         ];
 
