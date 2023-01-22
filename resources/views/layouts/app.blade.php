@@ -32,7 +32,6 @@
         <link href="{{ asset('light-bootstrap/css/demo.css') }}" rel="stylesheet" />
         <!-- Custom CSS -->
         <link href="{{ asset('css/style.css') }}" rel="stylesheet" />
-        @vite(['resources/js/app.js'])
         @stack('css')
     </head>
 

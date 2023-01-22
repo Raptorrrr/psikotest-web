@@ -75,14 +75,14 @@ class HistoryDummySeeder extends Seeder
                 'start_at' => now(),
                 'finish_at' => now(),
             ],
-            // [
-            //     'user_id' => 2,
-            //     'session_id' => 8,
-            //     'correct_answer' => 8,
-            //     'wrong_answer' => 2,
-            //     'start_at' => now(),
-            //     'finish_at' => now(),
-            // ]
+            [
+                'user_id' => 2,
+                'session_id' => 8,
+                'correct_answer' => 0,
+                'wrong_answer' => 0,
+                'start_at' => now(),
+                'finish_at' => now()->addHours(4),
+            ]
         ];
         foreach ($history as $question) {
             HistoryTest::query()->create($question);
