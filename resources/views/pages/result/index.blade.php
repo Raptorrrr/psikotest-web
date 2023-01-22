@@ -17,7 +17,7 @@
   <div class="col-md-12">
     <table class="table table-hover table-striped mt-2">
       <thead>
-        <th>ID</th>
+        <th>No</th>
         <th>Nama</th>
         <th class="justify-content-end">Hasil</th>
       </thead>
