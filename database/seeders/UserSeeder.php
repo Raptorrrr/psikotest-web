@@ -274,5 +274,7 @@ class UserSeeder extends Seeder
         foreach ($users as $user) {
             User::query()->create($user);
         };
+
+        dump('Peserta : ' . User::query()->where('role', User::ROLE_PARTICIPANT)->count());
     }
 }
