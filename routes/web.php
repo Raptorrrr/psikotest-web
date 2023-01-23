@@ -28,14 +28,16 @@ Auth::routes();
 
 Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
-Route::group(['middleware' => 'auth'], function () {
-    //User Test
+//User
+Route::group(['middleware' => ['auth', 'role:' . \App\Models\User::ROLE_PARTICIPANT]], function () {
     Route::get('test/{slug}/{session}/intro', [UserAnswerController::class, 'intro'])->name('test.intro');
     Route::get('test/{slug}/{session}', [UserAnswerController::class, 'index'])->name('test.index');
     Route::get('test/finish', [UserAnswerController::class, 'finish'])->name('test.finish');
     Route::post('test/{slug}/{session}', [UserAnswerController::class, 'store'])->name('test.store');
+});
 
-    //Admin
+//Admin
+Route::group(['middleware' => ['auth', 'role:' . \App\Models\User::ROLE_ADMIN]], function () {
     Route::get('history-test', [HistoryTestController::class, 'index'])->name('history-test.index');
 
     Route::prefix('history-test/detail')->name('history-test.detail.')->group(function () {

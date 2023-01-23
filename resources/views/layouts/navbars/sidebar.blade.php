@@ -17,37 +17,39 @@ Tip 2: you can also add an image using data-image tag
                     <p>{{ __("Dashboard") }}</p>
                 </a>
             </li>
-            <li class="nav-item @if($activePage == 'history-test') active @endif">
-                <a class="nav-link" href="{{route('history-test.index')}}">
-                    <i class="nc-icon nc-notes"></i>
-                    <p>{{ __("Hasil Tes") }}</p>
-                </a>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" data-toggle="collapse" href="#laravelExamples" @if($activeButton == 'laravel') aria-expanded="true" @endif>
-                    <i class="nc-icon nc-settings-gear-64"></i>
-                    <p>
-                        {{ __('Setting') }}
-                        <b class="caret"></b>
-                    </p>
-                </a>
-                <div class="collapse @if($activeButton == 'setting') show @endif" id="laravelExamples">
-                    <ul class="nav">
-                        <li class="nav-item @if($activePage == 'user') active @endif">
-                            <a class="nav-link" href="{{route('setting.session.index')}}">
-                                <i class="nc-icon nc-single-copy-04"></i>
-                                <p>{{ __("Kelola Soal") }}</p>
-                            </a>
-                        </li>
-                        <li class="nav-item @if($activePage == 'user-management') active @endif">
-                            <a class="nav-link" href="{{route('setting.type.index')}}">
-                                <i class="nc-icon nc-single-02"></i>
-                                <p>{{ __("Kelola User") }}</p>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </li>
+            @if(auth()->user()->role === 'admin')
+                <li class="nav-item @if($activePage == 'history-test') active @endif">
+                    <a class="nav-link" href="{{route('history-test.index')}}">
+                        <i class="nc-icon nc-notes"></i>
+                        <p>{{ __("Hasil Tes") }}</p>
+                    </a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" data-toggle="collapse" href="#laravelExamples" @if($activeButton == 'laravel') aria-expanded="true" @endif>
+                        <i class="nc-icon nc-settings-gear-64"></i>
+                        <p>
+                            {{ __('Setting') }}
+                            <b class="caret"></b>
+                        </p>
+                    </a>
+                    <div class="collapse @if($activeButton == 'setting') show @endif" id="laravelExamples">
+                        <ul class="nav">
+                            <li class="nav-item @if($activePage == 'user') active @endif">
+                                <a class="nav-link" href="{{route('setting.session.index')}}">
+                                    <i class="nc-icon nc-single-copy-04"></i>
+                                    <p>{{ __("Kelola Soal") }}</p>
+                                </a>
+                            </li>
+                            <li class="nav-item @if($activePage == 'user-management') active @endif">
+                                <a class="nav-link" href="{{route('setting.type.index')}}">
+                                    <i class="nc-icon nc-single-02"></i>
+                                    <p>{{ __("Kelola User") }}</p>
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+            @endif
         </ul>
     </div>
 </div>
