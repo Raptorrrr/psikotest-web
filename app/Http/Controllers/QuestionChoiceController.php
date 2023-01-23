@@ -7,11 +7,12 @@ use App\Models\QuestionChoice;
 use App\Models\Session;
 use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Validation\Rule;
 use Illuminate\View\View;
 
 class QuestionChoiceController extends Controller
 {
-    protected function rules(): array
+    protected function rules(QuestionChoice $questionChoice = null): array
     {
         return [
             'choice' => ['required', 'string'],

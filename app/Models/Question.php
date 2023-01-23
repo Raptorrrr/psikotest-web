@@ -15,6 +15,7 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property $image
  * @property $order
  * @property $correct_answer
+ * @property $is_import
  */
 
 class Question extends Model

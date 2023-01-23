@@ -37,7 +37,7 @@
 
 <body>
 <div class="content">
-    <div class="container-fluid py-2">
+    <div class="container py-2">
         @yield('content')
     </div>
 </div>

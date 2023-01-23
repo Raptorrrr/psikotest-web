@@ -25,6 +25,9 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('dashboard', ['firstTypeSlug' => Type::query()->first()->slug, 'first_session_id' => Session::query()->first()->id]);
+        return view('dashboard', [
+            'firstTypeSlug' => Type::query()->first()->slug,
+            'firstSessionId' => Session::query()->first()->id
+        ]);
     }
 }

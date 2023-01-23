@@ -27,7 +27,7 @@ class Controller extends BaseController
     public function storeImage(Request $request, string $keyword, string $path): string | null
     {
         $image_path = null;
-        if($request->get($keyword) !== null) {
+        if($request[$keyword] !== null) {
             $uploadFile = $request->file($keyword);
             $image_path = $uploadFile?->store($path, 'public');
         }
@@ -38,7 +38,7 @@ class Controller extends BaseController
     public function updateImage(Request $request, string $keyword, string $path, mixed $model, string $column): string | null
     {
         $image_path = null;
-        if($request->get($keyword) !== null) {
+        if($request[$keyword] !== null) {
             $uploadFile = $request->file($keyword);
 
             if($uploadFile !== null){

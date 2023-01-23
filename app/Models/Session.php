@@ -13,6 +13,9 @@ use Illuminate\Database\Eloquent\Relations\HasMany;
  * @property $session
  * @property $time
  * @property $count_answer
+ * @property $intro
+ * @property $image
+ * @property $is_import
  */
 
 class Session extends Model
@@ -26,6 +29,9 @@ class Session extends Model
         'session',
         'time',
         'count_answer',
+        'intro',
+        'image',
+        'is_import'
     ];
 
     public function type(): BelongsTo

@@ -11,13 +11,15 @@ use Illuminate\View\View;
 
 class SessionController extends Controller
 {
-    protected function rules(): array
+    protected function rules(Session $session = null): array
     {
         return [
             'type_id' => ['required', Rule::exists('types', 'id')],
             'session' => ['required', 'integer'],
-            'time' => ['required', 'integer'],
+            'time' => ['required', 'numeric'],
             'count_answer' => ['required', 'integer'],
+            'intro' => ['nullable'],
+            'image' => ['nullable', 'image', 'max:2048'],
         ];
     }
 
@@ -33,11 +35,16 @@ class SessionController extends Controller
     {
         $filtered = $request->validate($this->rules());
 
+        $type = Type::query()->where('id', $filtered['type_id'])->first();
+        $image_path = $this->storeImage($request, 'image', 'images/session/' . $type->slug);
+
         $session = Session::query()->create([
             'type_id' => $filtered['type_id'],
             'session' => $filtered['session'],
             'time' => $filtered['time'] * 60,
             'count_answer' => $filtered['count_answer'],
+            'intro' => $filtered['intro'],
+            'image' => $image_path,
         ]);
 
         return redirect()->route('setting.session.index');
@@ -47,10 +54,14 @@ class SessionController extends Controller
     {
         $filtered = $request->validate($this->rules());
 
+        $image_path = $this->updateImage($request, 'image', 'images/session/' . $session->type->slug, $session, 'image');
+
         $session->type_id = $filtered['type_id'];
         $session->session = $filtered['session'];
         $session->time = $filtered['time'] * 60;
         $session->count_answer = $filtered['count_answer'];
+        $session->intro = $filtered['intro'];
+        $session->image = $image_path;
         $session->save();
 
         return redirect()->route('setting.session.index');

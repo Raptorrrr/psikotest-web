@@ -13,7 +13,7 @@ use Illuminate\View\View;
 
 class QuestionController extends Controller
 {
-    protected function rules(): array
+    protected function rules(Question $question = null): array
     {
         return [
             'type_question' => ['required', 'string'],
@@ -48,7 +48,7 @@ class QuestionController extends Controller
         $filtered = $request->validate($this->rules());
         $filtered = $this->checkTypeQuestion($filtered);
 
-        $image_path = $this->storeImage($request, 'image', 'images/question/' . $session->type->name . '/' . $session->session);
+        $image_path = $this->storeImage($request, 'image', 'images/question/' . $session->type->slug . '/' . $session->session);
 
         $question = Question::query()->create([
             'session_id' => $filtered['session_id'],
@@ -78,7 +78,7 @@ class QuestionController extends Controller
             $this->deleteImage($question, 'image');
             $image_path = null;
         } else
-            $image_path = $this->updateImage($request, 'image', 'images/question/' . $session->type->name . '/' . $session->session, $question, 'image');
+            $image_path = $this->updateImage($request, 'image', 'images/question/' . $session->type->slug . '/' . $session->session, $question, 'image');
 
         $question->session_id = $filtered['session_id'];
         $question->question = $filtered['question'];

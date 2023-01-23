@@ -1,4 +1,4 @@
-<div class="modal modal-large fade modal-primary" id="editModal-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
+<div class="modal fade modal-primary" id="editModal-{{$key}}" tabindex="-1" role="dialog" aria-labelledby="editModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="{{ route('setting.type.update', $type->id) }}" method="POST">
@@ -13,7 +13,7 @@
                 <div class="modal-body">
                     <div class="form-group">
                         <label for="order">{{ __('Urutan Tes') }}</label>
-                        <input type="number" class="form-control" name="order" min="0" placeholder="Masukkan Urutan Tes" value="{{ $type->order }}>
+                        <input type="number" class="form-control" name="order" min="0" placeholder="Masukkan Urutan Tes" value="{{ $type->order }}">
                     </div>
                     <div class="form-group">
                         <label for="name">{{ __('Tipe Soal') }}</label>
@@ -24,20 +24,6 @@
                         <textarea name="intro" class="form-control" id="ckeditor-edit-{{ $key }}" placeholder="Masukkan Intro" rows="3">
                             {!! $type->intro !!}
                         </textarea>
-                        @push('js')
-                            <script>
-                                ClassicEditor
-                                    .create( document.querySelector( '#ckeditor-edit-{!! json_encode($key) !!}'), {
-                                        toolbar: [ 'heading', 'bold', 'italic', 'outdent', 'indent', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
-                                    } )
-                                    .then( editor => {
-                                        // console.log( editor );
-                                    } )
-                                    .catch( error => {
-                                        console.error( error );
-                                    } );
-                            </script>
-                        @endpush
                     </div>
                 </div>
                 <div class="modal-footer">

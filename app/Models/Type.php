@@ -24,7 +24,6 @@ class Type extends Model
     protected $fillable = [
         'order',
         'name',
-        'intro',
         'slug',
     ];
 

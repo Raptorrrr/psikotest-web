@@ -1,7 +1,7 @@
-<div class="modal fade modal-primary" id="editModal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal modal-large fade modal-primary" id="editModal-{{ $key }}" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
-            <form action="{{ route('setting.session.update', $session->id) }}" method="POST">
+            <form action="{{ route('setting.session.update', $session->id) }}" method="POST" enctype="multipart/form-data">
                 @csrf
                 @method('PUT')
                 <div class="modal-header d-block">
@@ -26,11 +26,25 @@
                     </div>
                     <div class="form-group">
                         <label for="time">{{ __('Durasi Waktu (menit)') }}</label>
-                        <input type="number" class="form-control" name="time" min="0" placeholder="Masukkan Waktu per Sesi" value="{{ $session->time / 60 }}">
+                        <input type="number" class="form-control" name="time" min="0" placeholder="Masukkan Waktu per Sesi" step="any" value="{{ $session->time / 60 }}">
                     </div>
                     <div class="form-group">
                         <label for="count_answer">{{ __('Jumlah Jawaban') }}</label>
                         <input type="number" class="form-control" name="count_answer" min="0" placeholder="Masukkan Jumlah Jawaban" value="{{ $session->count_answer }}">
+                    </div>
+                    <div class="form-group">
+                        <label for="intro">{{ __('Intro') }}</label>
+                        <textarea name="intro" class="form-control" id="ckeditor-edit-{{ $key }}" placeholder="Masukkan Intro" rows="3">
+                            {!! $session->intro !!}
+                        </textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="image">{{ __('Gambar (opsional)') }}</label>
+                        <div class="text-center" id="preview-container-edit-{{ $key }}">
+                            <img id="preview-image-before-upload-edit-{{ $key }}" src="{{ $session->image !== null ? Storage::url($session->image) : asset('images/no-image.png') }}"
+                                 alt="preview image" style="max-height: 500px;">
+                        </div>
+                        <input type="file" class="form-control-file" id="image-edit-{{ $key }}" name="image">
                     </div>
                 </div>
                 <div class="modal-footer">
@@ -41,3 +55,32 @@
         </div>
     </div>
 </div>
+
+@push('js')
+    <script>
+        ClassicEditor
+            .create( document.querySelector( '#ckeditor-edit-{!! json_encode($key) !!}'), {
+                toolbar: [ 'heading', 'bold', 'italic', 'outdent', 'indent', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
+            } )
+            .then( editor => {
+                // console.log( editor );
+            } )
+            .catch( error => {
+                console.error( error );
+            } );
+
+        $(document).ready(function (e) {
+            const key = {!! json_encode($key) !!}
+            $('#image-edit-' + key).change(function(){
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+                    $('#preview-image-before-upload-edit-' + key).attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+
+            });
+        });
+    </script>
+@endpush

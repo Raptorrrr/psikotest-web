@@ -1,4 +1,4 @@
-<div class="modal modal-large fade modal-primary" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
+<div class="modal fade modal-primary" id="createModal" tabindex="-1" role="dialog" aria-labelledby="createModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
             <form action="{{ route('setting.type.store') }}" method="POST">
@@ -17,24 +17,6 @@
                     <div class="form-group">
                         <label for="name">{{ __('Tipe Soal') }}</label>
                         <input type="text" class="form-control" name="name" placeholder="Masukkan Tipe Soal">
-                    </div>
-                    <div class="form-group">
-                        <label for="intro">{{ __('Intro') }}</label>
-                        <textarea name="intro" class="form-control" id="ckeditor-create" placeholder="Masukkan Intro" rows="3"></textarea>
-                        @push('js')
-                            <script>
-                                ClassicEditor
-                                    .create( document.querySelector( '#ckeditor-create'), {
-                                        toolbar: [ 'heading', 'bold', 'italic', 'outdent', 'indent', 'link', 'undo', 'redo', 'numberedList', 'bulletedList' ]
-                                    } )
-                                    .then( editor => {
-                                        // console.log( editor );
-                                    } )
-                                    .catch( error => {
-                                        console.error( error );
-                                    } );
-                            </script>
-                        @endpush
                     </div>
                 </div>
                 <div class="modal-footer">

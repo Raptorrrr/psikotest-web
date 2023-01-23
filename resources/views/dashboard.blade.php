@@ -3,42 +3,21 @@
 @section('content')
 <div class="content">
     <div class="container-fluid">
-        <h2 class="text-center">Psikotest</h2>
-        <p class="text-justify">
-            Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's
-            standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to
-            make a type specimen book. It has survived not only five centuries, but also the leap into electronic
-            typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset
-            sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus
-            PageMaker including versions of Lorem Ipsum.
-        </p>
+        <h2 class="text-center">Peraturan Dalam Pelaksanaan Psikotes</h2>
+        <div class="rules">
+            <div>1. Peserta diwajibkan menyediakan 1 HP dan 1 Laptop untuk pelaksanaan tes.</div>
+            <div>2. HP digunakan untuk bergabung ke ruangan Zoom Meeting yang telah disediakan pada saat pelaksanaan Psikotes.</div>
+            <div>3. Laptop digunakan untuk mengerjakan Psikotes.</div>
+            <div>4. Peserta diharapkan mempersiapkan koneksi internet yang stabil selama pelaksanaan Psikotes.</div>
+            <div>5. Peserta diwajibkan berada di ruang tersendiri, tidak ada orang lain di ruang tersebut dan menyalakan kamera Zoom Meeting selama pengerjaan Psikotes berlangsung.</div>
+            <div>6. Pastikan tidak ada alat bantu apapun disekitar peserta yang dapat menunjang pelaksanaan tes (Buku, Kamus, dll.).</div>
+            <div>7. Peserta wajib mengikuti seluruh rangkaian tes dengan penuh tanggung jawab selama ± 3 jam.</div>
+            <div>8. Memastikan diri telah menjawab semua soal yang tersedia.</div>
+            <div>9. Jawaban akan tersimpan otomatis jika waktu habis atau saat selesai mengerjakan.</div>
+            <div>10. Jika Peserta melanggar salah satu peraturan Psikotes maka dianggap gugur.</div>
+        </div>
         <div class="text-center">
-            <button type="button" class="btn btn-main btn-fill" data-toggle="modal" data-target="#startModal">Mulai Tes</button>
-
-            <!-- Start Modal -->
-            <div class="modal fade modal-primary" id="startModal" tabindex="-1" role="dialog" aria-labelledby="startModalLabel" aria-hidden="true">
-                <div class="modal-dialog">
-                    <div class="modal-content">
-                        <div class="modal-header justify-content-center">
-                            <i class="fa fa-exclamation-circle text-main fa-100"></i>
-                        </div>
-                        <div class="modal-body text-center">
-                            <p>Apakah anda yakin ingin memulai tes?</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-default btn-fill btn-simple" data-dismiss="modal">Kembali</button>
-                            <a
-                                class="btn btn-main btn-fill btn-simple"
-                                href="{{ route('test.index', ['slug' => $firstTypeSlug, 'session' => $first_session_id]) }}"
-                            >
-                                Mulai
-                            </a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- End Modal -->
+            <a type="button" class="btn btn-main btn-fill" href="{{ route('test.intro', ['slug' => $firstTypeSlug, 'session' => $firstSessionId]) }}">Mulai Tes</a>
         </div>
     </div>
 </div>

@@ -30,7 +30,9 @@ Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('das
 
 Route::group(['middleware' => 'auth'], function () {
     //User Test
+    Route::get('test/{slug}/{session}/intro', [UserAnswerController::class, 'intro'])->name('test.intro');
     Route::get('test/{slug}/{session}', [UserAnswerController::class, 'index'])->name('test.index');
+    Route::get('test/finish', [UserAnswerController::class, 'finish'])->name('test.finish');
     Route::post('test/{slug}/{session}', [UserAnswerController::class, 'store'])->name('test.store');
 
     //Admin
