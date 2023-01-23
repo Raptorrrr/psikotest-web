@@ -11,7 +11,7 @@
                         <div class="card-header ">
                             <div class="row">
                                 <div class="col-sm">
-                                    <img src="{{ asset('light-bootstrap/img/Logo.png') }}" alt="logo" width=140 heigth=80>
+                                    <img src="{{ asset('images/logo.png') }}" alt="logo" width=140 heigth=80>
                                 </div>
                                 <div class="col-md">
                                     <h3 style="padding:10%;">{{ __('Login Psikotes') }}</h3>
