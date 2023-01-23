@@ -8,6 +8,7 @@ use App\Http\Controllers\SessionController;
 use App\Http\Controllers\QuestionController;
 use App\Http\Controllers\QuestionChoiceController;
 use App\Http\Controllers\UserAnswerController;
+use App\Http\Controllers\UserController;
 
 /*
 |--------------------------------------------------------------------------
@@ -28,14 +29,16 @@ Auth::routes();
 
 Route::get('/dashboard', 'App\Http\Controllers\HomeController@index')->name('dashboard');
 
-Route::group(['middleware' => 'auth'], function () {
-    //User Test
+//User
+Route::group(['middleware' => ['auth', 'role:' . \App\Models\User::ROLE_PARTICIPANT]], function () {
     Route::get('test/{slug}/{session}/intro', [UserAnswerController::class, 'intro'])->name('test.intro');
     Route::get('test/{slug}/{session}', [UserAnswerController::class, 'index'])->name('test.index');
     Route::get('test/finish', [UserAnswerController::class, 'finish'])->name('test.finish');
     Route::post('test/{slug}/{session}', [UserAnswerController::class, 'store'])->name('test.store');
+});
 
-    //Admin
+//Admin
+Route::group(['middleware' => ['auth', 'role:' . \App\Models\User::ROLE_ADMIN]], function () {
     Route::get('history-test', [HistoryTestController::class, 'index'])->name('history-test.index');
 
     Route::prefix('history-test/detail')->name('history-test.detail.')->group(function () {
@@ -78,10 +81,13 @@ Route::group(['middleware' => 'auth'], function () {
             Route::put('{questionChoice}', [QuestionChoiceController::class, 'update'])->name('update');
             Route::delete('{questionChoice}', [QuestionChoiceController::class, 'destroy'])->name('destroy');
         });
-    });
 
-    //    Route::get('profile', [ProfileController::class, 'edit'])->name('profile.edit');
-    //    Route::patch('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
-    //    Route::patch('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
-    //    Route::get('{page}', ['as' => 'page.index', 'uses' => 'App\Http\Controllers\PageController@index']);
+        //User Management
+        Route::prefix('user')->name('user.')->group(function () {
+            Route::get('', [UserController::class, 'index'])->name('index');
+            Route::post('', [UserController::class, 'store'])->name('store');
+            Route::put('{user}', [UserController::class, 'update'])->name('update');
+            Route::delete('{user}', [UserController::class, 'destroy'])->name('destroy');
+        });
+    });
 });

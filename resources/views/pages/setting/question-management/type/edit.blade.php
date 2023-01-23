@@ -19,12 +19,6 @@
                         <label for="name">{{ __('Tipe Soal') }}</label>
                         <input type="text" class="form-control" name="name" placeholder="Masukkan Tipe Soal" value="{{ $type->name }}">
                     </div>
-                    <div class="form-group">
-                        <label for="intro">{{ __('Intro') }}</label>
-                        <textarea name="intro" class="form-control" id="ckeditor-edit-{{ $key }}" placeholder="Masukkan Intro" rows="3">
-                            {!! $type->intro !!}
-                        </textarea>
-                    </div>
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-default btn-fill btn-simple" data-dismiss="modal">Kembali</button>

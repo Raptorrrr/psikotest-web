@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
 use Illuminate\Database\Eloquent\Casts\Attribute;
 
+/**
+ * @property $user_id
+ * @property $session_id
+ * @property $correct_answer
+ * @property $wrong_answer
+ * @property $start_at
+ * @property $finish_at
+ */
+
 class HistoryTest extends Model
 {
     use HasFactory;
