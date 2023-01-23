@@ -1,4 +1,4 @@
-@extends('layouts/app', ['activePage' => 'login', 'title' => 'Light Bootstrap Dashboard Laravel by Creative Tim & UPDIVISION'])
+@extends('layouts/app', ['activePage' => 'login', 'title' => 'Psikotest Biro Marini'])
 
 @section('content')
 <div class="full-page section-image" data-color="black" data-image="{{ asset('light-bootstrap/img/full-screen-image-2.jpg') }}" style="height: 100vh">
@@ -9,7 +9,14 @@
                     @csrf
                     <div class="card card-login card-hidden">
                         <div class="card-header ">
-                            <h3 class="header text-center">{{ __('Login Psikotes') }}</h3>
+                            <div class="row">
+                                <div class="col-sm">
+                                    <img src="{{ asset('light-bootstrap/img/Logo.png') }}" alt="logo" width=140 heigth=80>
+                                </div>
+                                <div class="col-md">
+                                    <h3 style="padding:10%;">{{ __('Login Psikotes') }}</h3>
+                                </div>
+                            </div>
                         </div>
                         <div class="card-body ">
                             <div class="card-body">
