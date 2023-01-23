@@ -133,8 +133,8 @@
 
 @push('js')
     <script>
-        const finish_at = new Date()
-        finish_at.setSeconds(finish_at.getSeconds() + {!! json_encode($session_time) !!})
+        const finish_at = new Date({!! json_encode($start_at) !!})
+        finish_at.setSeconds(finish_at.getSeconds() + 10)
 
         const x = setInterval(function () {
             const now = new Date();

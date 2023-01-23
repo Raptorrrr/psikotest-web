@@ -19,7 +19,7 @@
             >
         </div>
     @endif
-    <div class="rules">
+    <div class="rules mt-5">
         {!! $session->intro !!}
     </div>
     <div class="text-center">

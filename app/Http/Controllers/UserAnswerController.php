@@ -52,7 +52,10 @@ class UserAnswerController extends Controller
             ->whereHas('type', fn ($q) => $q->where('slug', $slug))
             ->first();
 
-        $historyTest = HistoryTest::query()->create([
+        $historyTest = HistoryTest::query()->firstOrCreate([
+            'user_id' => auth()->user()->id,
+            'session_id' => $session->id,
+        ], [
             'user_id' => auth()->user()->id,
             'session_id' => $session->id,
             'start_at' => now(),
@@ -64,6 +67,7 @@ class UserAnswerController extends Controller
                 ->with(['session.type', 'choices'])
                 ->where('session_id', $session->id)
                 ->get(),
+            'start_at' => $historyTest->start_at,
             'session_time' => $session->time,
         ]);
     }

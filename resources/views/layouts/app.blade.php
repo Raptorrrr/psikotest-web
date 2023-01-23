@@ -47,12 +47,7 @@
         <div class="@if (auth()->check() && request()->route()->getName() != "") main-panel @endif">
             @include('layouts.navbars.navbar')
             <div class="content">
-                <div class="container-fluid">
-                    <div class="card">
-                        @yield('content')
-                        <!-- </div> -->
-                    </div>
-                </div>
+                @yield('content')
             </div>
         </div>
     </div>
