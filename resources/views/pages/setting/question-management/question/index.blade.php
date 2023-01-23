@@ -1,4 +1,4 @@
-@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
+@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotes Biromarini', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
     <div class="row justify-content-end py-2">
@@ -29,19 +29,17 @@
         <div class="col-md-12">
             <table class="table table-hover table-striped mt-2">
                 <thead>
-                <th>No</th>
+                <th>Nomor Soal</th>
                 <th>Tipe Soal</th>
                 <th>Sesi</th>
-                <th>Nomor Soal</th>
                 <th class="justify-content-end">Action</th>
                 </thead>
                 <tbody>
                 @foreach($questions as $key => $question)
                     <tr>
-                        <td style="width: 5%">{{ $key+1 }}</td>
+                        <td style="width: 10%">{{ $question->order }}</td>
                         <td>{{ $question->session->type->name }}</td>
                         <td>{{ $question->session->session }}</td>
-                        <td>{{ $question->order }}</td>
                         <td class="justify-content-end">
                             <a class="btn btn-success" href="{{ URL::route('setting.question.choice.index', ['session' => $session->id, 'question' => $question->id]) }}">
                                 <i class="fa fa-cogs"></i>

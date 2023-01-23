@@ -15,8 +15,9 @@ return new class extends Migration
     {
         Schema::create('types', function (Blueprint $table) {
             $table->id();
+            $table->integer('order')->unique();
             $table->string('name');
-            $table->text('intro')->nullable();
+            $table->string('slug')->unique();
             $table->timestamps();
         });
     }

@@ -28,6 +28,19 @@ class UsersTableSeeder extends Seeder
             'updated_at' => now()
         ]);
 
+        DB::table('users')->insert([
+            'name' => 'Iqbal',
+            'nik' => '1111',
+            'address' => 'Alamat Iqbal',
+            'phone' => '980808080808',
+            'role' => User::ROLE_PARTICIPANT,
+            'email' => 'iqbal@gmail.com',
+            'email_verified_at' => now(),
+            'password' => Hash::make('password'),
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+
         dump('User : ' . User::query()->count());
     }
 }

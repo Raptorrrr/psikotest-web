@@ -21,25 +21,29 @@ class SessionSeeder extends Seeder
                 'type_id' => '1',
                 'session' => '1',
                 'time'  => '180',
-                'count_answer' => '1'
+                'count_answer' => '1',
+                'is_import' => 1,
             ],
             [
                 'type_id' => '1',
                 'session' => '2',
                 'time'  => '240',
-                'count_answer' => '2'
+                'count_answer' => '2',
+                'is_import' => 1,
             ],
             [
                 'type_id' => '1',
                 'session' => '3',
                 'time'  => '180',
-                'count_answer' => '1'
+                'count_answer' => '1',
+                'is_import' => 1,
             ],
             [
                 'type_id' => '1',
                 'session' => '4',
                 'time'  => '210',
-                'count_answer' => '1'
+                'count_answer' => '1',
+                'is_import' => 1,
             ],
             // SKB
             [

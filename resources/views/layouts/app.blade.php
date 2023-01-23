@@ -58,6 +58,7 @@
 
 
 
+<<<<<<< HEAD
 </body>
 <!--   Core JS Files   -->
 <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -101,3 +102,60 @@
 @stack('js')
 
 </html>
+=======
+    </body>
+        <!--   Core JS Files   -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <script src="{{ asset('light-bootstrap/js/core/jquery.3.2.1.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('light-bootstrap/js/core/popper.min.js') }}" type="text/javascript"></script>
+    <script src="{{ asset('light-bootstrap/js/core/bootstrap.min.js') }}" type="text/javascript"></script>
+
+    <script src="{{ asset('light-bootstrap/js/plugins/jquery.sharrre.js') }}"></script>
+    <!--  Plugin for Switches, full documentation here: http://www.jque.re/plugins/version3/bootstrap.switch/ -->
+    <script src="{{ asset('light-bootstrap/js/plugins/bootstrap-switch.js') }}"></script>
+    <!--  Google Maps Plugin    -->
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=YOUR_KEY_HERE"></script>
+    <!--  Chartist Plugin  -->
+    <script src="{{ asset('light-bootstrap/js/plugins/chartist.min.js') }}"></script>
+    <!--  Notifications Plugin    -->
+    <script src="{{ asset('light-bootstrap/js/plugins/bootstrap-notify.js') }}"></script>
+    <!-- Control Center for Light Bootstrap Dashboard: scripts for the example pages etc -->
+    <script src="{{ asset('light-bootstrap/js/light-bootstrap-dashboard.js?v=2.0.0') }}" type="text/javascript"></script>
+    <!-- Light Bootstrap Dashboard DEMO methods, don't include it in your project! -->
+    <script src="{{ asset('light-bootstrap/js/demo.js') }}"></script>
+    {{-- CKEditor CDN --}}
+    <script src="https://cdn.ckeditor.com/ckeditor5/23.0.0/classic/ckeditor.js"></script>
+    <script>
+        function showNotification(from, align) {
+            color = Math.floor((Math.random() * 4) + 1);
+
+            $.notify({
+                icon: "nc-icon nc-app",
+                message: "Welcome to <b>Light Bootstrap Dashboard</b> - a beautiful freebie for every web developer."
+
+            }, {
+                type: type[color],
+                timer: 8000,
+                placement: {
+                    from: from,
+                    align: align
+                }
+            });
+        }
+
+        $(document).ready(function (e) {
+            $('#image').change(function(){
+                let reader = new FileReader();
+
+                reader.onload = (e) => {
+                    $('#preview-image-before-upload').attr('src', e.target.result);
+                }
+
+                reader.readAsDataURL(this.files[0]);
+
+            });
+        });
+    </script>
+    @stack('js')
+</html>
+>>>>>>> f37ca6928f5e23e5e46d309420bcd74c2371366b

@@ -1,4 +1,4 @@
-@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
+@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotes Biromarini', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
     @include('components.error-alert')
@@ -24,10 +24,8 @@
     <div class="row">
         <div class="col-md-12">
             <table class="table table-hover table-striped mt-2">
-                <thead>
-                    <th>No</th>
-                    <th>Tipe Soal</th>
-                    <th>Sesi</th>
+                <thead><th>Tipe Soal</th>
+                    <th>Urutan Sesi</th>
                     <th>Durasi Waktu (menit)</th>
                     <th>Jumlah Jawaban</th>
                     <th class="justify-content-end">Action</th>
@@ -35,7 +33,6 @@
                 <tbody>
                 @foreach($sessions as $key => $session)
                     <tr>
-                        <td style="width: 5%">{{ $key+1 }}</td>
                         <td>{{ $session->type->name }}</td>
                         <td>{{ $session->session }}</td>
                         <td>{{ $session->time / 60 }}</td>

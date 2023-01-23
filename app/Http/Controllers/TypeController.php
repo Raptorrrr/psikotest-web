@@ -5,15 +5,19 @@ namespace App\Http\Controllers;
 use App\Models\Type;
 use Illuminate\Http\Request;
 use Illuminate\View\View;
-use \Illuminate\Http\RedirectResponse;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Validation\Rule;
 
 class TypeController extends Controller
 {
-    protected function rules(): array
+    protected function rules(Type $type = null): array
     {
         return [
+            'order' => ['required', 'integer', Rule::when($type !== null,
+                ['unique:types,order,' . $type?->id],
+                ['unique:types']
+            )],
             'name' => ['required', 'string'],
-            'intro' => ['nullable'],
         ];
     }
 
@@ -29,8 +33,8 @@ class TypeController extends Controller
         $filtered = $request->validate($this->rules());
 
         $type = Type::query()->create([
+            'order' => $filtered['order'],
             'name' => $filtered['name'],
-            'intro' => $filtered['intro'],
         ]);
 
         return redirect()->route('setting.type.index');
@@ -38,10 +42,10 @@ class TypeController extends Controller
 
     public function update(Request $request, Type $type): RedirectResponse
     {
-        $filtered = $request->validate($this->rules());
+        $filtered = $request->validate($this->rules($type));
 
+        $type->order = $filtered['order'];
         $type->name = $filtered['name'];
-        $type->intro = $filtered['intro'];
         $type->save();
 
         return redirect()->route('setting.type.index');

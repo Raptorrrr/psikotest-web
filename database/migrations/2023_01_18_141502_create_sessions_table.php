@@ -19,6 +19,9 @@ return new class extends Migration
             $table->integer('session');
             $table->integer('time');
             $table->integer('count_answer');
+            $table->text('intro')->nullable();
+            $table->string('image')->nullable();
+            $table->boolean('is_import')->default(0);
             $table->timestamps();
         });
     }

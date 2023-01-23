@@ -22,7 +22,6 @@ class QuestionEPPSSeeder extends Seeder
                 'question' => null,
                 'image' => null,
                 'order'  => $no + 1,
-                'correct_answer' => null,
             ];
             Question::query()->create($questions);
         }

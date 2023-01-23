@@ -27,8 +27,6 @@ class DatabaseSeeder extends Seeder
             QuestionSKBChoiceSeeder::class,
             QuestionEPPSChoiceSeeder::class,
             UserSeeder::class
-            // HistoryDummySeeder::class,
-            // UserAnswerSeeder::class
         ]);
     }
 }

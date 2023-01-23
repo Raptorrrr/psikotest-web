@@ -1,4 +1,4 @@
-@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
+@extends('pages.setting.question-management.setting-layout', ['activePage' => 'session', 'title' => 'Psikotes Biromarini', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
     <div class="row justify-content-end py-2">
@@ -29,7 +29,6 @@
         <div class="col-md-12">
             <table class="table table-hover table-striped mt-2">
                 <thead>
-                <th>No</th>
                 <th>Urutan Pilihan</th>
                 <th>Pilihan</th>
                 <th>Keterangan</th>
@@ -38,8 +37,7 @@
                 <tbody>
                 @foreach($questionChoices as $key => $choice)
                     <tr>
-                        <td style="width: 5%">{{ $key+1 }}</td>
-                        <td>{{ $choice->order }}</td>
+                        <td style="width: 10%">{{ $choice->order }}</td>
                         <td>{{ $choice->choice }}</td>
                         <td>{{ $choice->value }}</td>
                         <td class="justify-content-end">

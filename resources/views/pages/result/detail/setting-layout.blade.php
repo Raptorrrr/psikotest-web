@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'detail', 'title' => 'Psikotest', 'navName' => 'Detail', 'activeButton' => 'historyTests'])
+@extends('layouts.app', ['activePage' => 'detail', 'title' => 'Psikotes Biromarini', 'navName' => 'Detail', 'activeButton' => 'historyTests'])
 
 @section('content')
 <ul class="nav nav-tabs">

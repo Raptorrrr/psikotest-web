@@ -7,7 +7,7 @@ Tip 2: you can also add an image using data-image tag
     <div class="sidebar-wrapper">
         <div class="logo">
             <a href="{{ route('dashboard') }}" class="simple-text">
-                {{ __("PSYCHO TEST") }}
+                {{ __("BIRO MARINI") }}
             </a>
         </div>
         <ul class="nav">

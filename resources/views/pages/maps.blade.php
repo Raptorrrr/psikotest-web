@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'maps', 'title' => 'Psikotest', 'navName' => 'Maps', 'activeButton' => 'setting'])
+@extends('layouts.app', ['activePage' => 'maps', 'title' => 'Psikotes Biromarini', 'navName' => 'Maps', 'activeButton' => 'setting'])
 
 @section('content')
     <div class="map-container">

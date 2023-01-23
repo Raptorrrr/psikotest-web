@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'result', 'title' => 'Psikotest', 'navName' => 'result', 'activeButton' => 'result'])
+@extends('layouts.app', ['activePage' => 'result', 'title' => 'Psikotes Biromarini', 'navName' => 'result', 'activeButton' => 'result'])
 
 @section('content')
 <div class="row justify-content-end py-2">

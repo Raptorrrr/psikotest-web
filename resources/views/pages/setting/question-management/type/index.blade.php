@@ -1,4 +1,4 @@
-@extends('pages.setting.question-management.setting-layout', ['activePage' => 'type', 'title' => 'Psikotest', 'navName' => 'Question', 'activeButton' => 'setting'])
+@extends('pages.setting.question-management.setting-layout', ['activePage' => 'type', 'title' => 'Psikotes Biromarini', 'navName' => 'Question', 'activeButton' => 'setting'])
 
 @section('setting-content')
 @include('components.error-alert')
@@ -20,20 +20,19 @@
         </button>
     </div>
 </div>
-</div>
 
 <div class="row">
     <div class="col-md-12">
         <table class="table table-hover table-striped mt-2">
             <thead>
-                <th>No</th>
+                <th>Urutan Tipe</th>
                 <th>Tipe Soal</th>
                 <th class="justify-content-end">Action</th>
             </thead>
             <tbody>
                 @foreach($types as $key => $type)
                 <tr>
-                    <td style="width: 5%">{{ $key+1 }}</td>
+                    <td style="width: 10%">{{ $type->order }}</td>
                     <td>{{ $type->name }}</td>
                     <td class="justify-content-end">
                         <button class="btn btn-main" data-toggle="modal" data-target="#editModal-{{$key}}">

@@ -111,3 +111,12 @@ a, a:hover, a:focus {
 .ck-editor__editable_inline {
     min-height: 200px;
 }
+
+li > button {
+    background-color: #BBB9B9;
+}
+
+.webdings {
+    font-family: 'webdings';
+    font-size: 30px
+}
