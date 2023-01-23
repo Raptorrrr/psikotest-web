@@ -55,14 +55,37 @@ class LoginController extends Controller
     {
         $user = User::query()->where('email', $request->email)->first();
 
-        if($user->is_expired)
-            throw ValidationException::withMessages([
-                $this->username() => ['Akun tersebut telah mengikuti ujian sebelumnya'],
-            ]);
+        if($user)
+        {
+            if($user->is_expired)
+                throw ValidationException::withMessages([
+                    $this->username() => ['Akun tersebut telah mengikuti ujian sebelumnya'],
+                ]);
+
+            if($user->is_login)
+                throw ValidationException::withMessages([
+                    $this->username() => ['Akun tersebut sedang login'],
+                ]);
+        }
 
         return $this->guard()->attempt(
             $this->credentials($request), $request->boolean('remember')
         );
+    }
+
+    /**
+     * The user has been authenticated.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  mixed  $user
+     * @return mixed
+     */
+    protected function authenticated(Request $request, $user)
+    {
+        $user->is_login = 1;
+        $user->save();
+
+        return;
     }
 
     /**
@@ -79,6 +102,9 @@ class LoginController extends Controller
             $user->is_expired = 1;
             $user->save();
         }
+
+        $user->is_login = 0;
+        $user->save();
 
         $this->guard()->logout();
 

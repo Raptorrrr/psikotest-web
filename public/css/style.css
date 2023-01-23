@@ -13,36 +13,30 @@
     flex: 1 1 auto;
 }
 
-.form-check-radio .form-check-sign::before {
-    left: 0;
-    top: 0;
-    color: #9368E9;
-}
-
-.form-check .form-check-sign::before, .form-check .form-check-sign::after {
-    margin-top: 0;
-    margin-left: 0;
-    color: #9368E9;
-}
-
-.form-check-radio input[type="radio"]:checked+.form-check-sign::after {
-    left: 0;
-    top: 0;
-    color: #9368E9;
-}
-
-.form-check .form-check-radio .form-check-sign::before, .form-check .form-check-sign::after {
-    margin-top: 0;
-    margin-left: 0;
-    color: #9368E9;
-}
-
 .modal.show .modal-dialog {
     -webkit-transform: translate(0, 3%)
 }
 
 .form-control {
     border: 1px solid #b3b3b3
+}
+
+/* Radio */
+.form-check-radio .form-check-sign::before {
+    left: auto;
+    top: auto;
+    color: #9368E9;
+}
+
+.form-check .form-check-sign::before, .form-check .form-check-sign::after, .form-check .form-check-radio .form-check-sign::before {
+    margin-top: 0;
+    color: #9368E9;
+}
+
+.form-check-radio input[type="radio"]:checked+.form-check-sign::after {
+    left: auto;
+    top: auto;
+    color: #9368E9;
 }
 
 /* Main Color */

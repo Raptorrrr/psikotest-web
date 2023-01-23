@@ -22,6 +22,7 @@ return new class extends Migration
             $table->string('phone')->nullable();
             $table->enum('role', User::getRoles())->default(User::ROLE_PARTICIPANT);
             $table->boolean('is_expired')->default(0);
+            $table->boolean('is_login')->default(0);
             $table->string('email')->unique();
             $table->timestamp('email_verified_at')->nullable();
             $table->string('password');

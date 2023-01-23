@@ -74,29 +74,13 @@ class UserAnswerController extends Controller
 
     public function store(Request $request, string $slug, int $session): RedirectResponse
     {
+//        dd($request->all());
         $newRequest = $request->all();
 
         $sessionModel = Session::query()
             ->whereHas('type', fn ($q) => $q->where('slug', $slug))
             ->where('session', $session)
             ->first();
-
-        $filtered = $request->is_expired == 0 ? $request->validate($this->rules($sessionModel->questions->count()), $this->rulesMessage()) : $request->all();
-
-        if ($request['answers'] === null) {
-            $filtered['answers'] = [];
-            $newRequest['answers'] = [];
-        }
-
-        foreach ($filtered['answers'] as $key => $answer) {
-            UserAnswer::query()->create([
-                'user_id' => auth()->user()->id,
-                'question_id' => $request['question'][$key],
-                'answer' => $answer,
-            ]);
-        }
-
-        $this->storeHistoryTest(auth()->user()->id, $sessionModel->id, $newRequest);
 
         //Prepare to Move Next Test
         $nextOrderSession = Session::query()->whereHas('type', fn ($q) => $q->where('slug', $slug))
@@ -115,6 +99,37 @@ class UserAnswerController extends Controller
             $nextOrderSession = $nextOrderSession->session;
         }
 
+        if(HistoryTest::query()->where('user_id', auth()->user()->id)->where('session_id', $sessionModel->id)->whereNotNull('finish_at')->first()) {
+            return redirect()->route('test.intro', ['slug' => $nextSlugType, 'session' => $nextOrderSession]);
+        }
+
+        $filtered = $request->is_expired == 0 ? $request->validate($this->rules($sessionModel->questions->count()), $this->rulesMessage()) : $request->all();
+
+        if ($request['answers'] === null) {
+            $filtered['answers'] = [];
+            $newRequest['answers'] = [];
+        }
+
+        foreach ($filtered['answers'] as $key => $answer) {
+            if($sessionModel->type->slug === 'cfit' && $sessionModel->session === 2) {
+                foreach ($answer as $ans) {
+                    UserAnswer::query()->create([
+                        'user_id' => auth()->user()->id,
+                        'question_id' => $request['question'][$key],
+                        'answer' => $ans,
+                    ]);
+                }
+            } else {
+                UserAnswer::query()->create([
+                    'user_id' => auth()->user()->id,
+                    'question_id' => $request['question'][$key],
+                    'answer' => $answer,
+                ]);
+            }
+        }
+
+        $this->storeHistoryTest(auth()->user()->id, $sessionModel->id, $newRequest);
+
         return redirect()->route('test.intro', ['slug' => $nextSlugType, 'session' => $nextOrderSession]);
     }
 
@@ -128,8 +143,18 @@ class UserAnswerController extends Controller
         if ($session->type->slug !== 'epps') {
             foreach ($data['answers'] as $key => $answer) {
                 $question_answer = Question::query()->where('id', $data['question'][$key])->first()->correct_answer;
-                if (in_array($answer, $question_answer))
-                    $correct_answer++;
+                if($session->type->slug === 'cfit' && $session->session === 2) {
+                    $correct_counter = 0;
+                    foreach ($answer as $ans) {
+                        if (in_array($ans, $question_answer))
+                            $correct_counter++;
+                    }
+
+                    $correct_answer = $correct_counter === 2 ? $correct_answer + 1 : $correct_answer;
+                }else {
+                    if (in_array($answer, $question_answer))
+                        $correct_answer++;
+                }
             }
             $wrong_answer = count($data['question']) - $correct_answer;
         }

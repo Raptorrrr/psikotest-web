@@ -18,6 +18,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property $is_expired
  * @property $email
  * @property $password
+ * @property $is_login
  */
 
 class User extends Authenticatable
@@ -39,6 +40,7 @@ class User extends Authenticatable
         'phone',
         'role',
         'is_expired',
+        '$is_login',
         'email',
         'password',
     ];

@@ -45,7 +45,7 @@
                 >
                     <table class="table table-hover mt-2">
                         <tbody>
-                        @if(strtolower($question->session->type->name) != 'epps')
+                        @if(strtolower($question->session->type->slug) != 'epps')
                             <tr class="bg-light">
                                 <td class="justify-content-center">
                                     @if($question->question === null)
@@ -63,7 +63,7 @@
                                             >
                                         @endif
                                     @else
-                                        @if(strtolower($question->session->type->name) == 'skb')
+                                        @if(strtolower($question->session->type->slug) == 'skb')
                                             <table class="table table-bordered mx-auto" style="width: 50%">
                                                 <tr>
                                                     <th colspan="{{ count($question->choices) }}">
@@ -86,30 +86,67 @@
                                 </td>
                             </tr>
                         @endif
-                        @if(strtolower($question->session->type->name) == 'skb')
+                        @if(strtolower($question->session->type->slug) == 'skb')
                             <tr class="bg-light">
                                 <td class="justify-content-center text-center">
                                     <h2 @if($question->session->session === 3) class="webdings" @endif>{!! $question->question !!}</h2>
                                 </td>
                             </tr>
                         @endif
-                        @foreach($question->choices as $choice)
+                        @foreach($question->choices as $keyChoice => $choice)
                             <tr>
                                 <td>
                                     <div class="form-group mb-0">
-                                        <div class="form-check form-check-radio mb-0">
-                                            <label class="form-check-label">
-                                                <input class="form-check-input" type="radio" name="answers[{{ $key }}]" value="{{ $choice->choice }}">
-                                                <span class="form-check-sign"></span>
-                                                <p class="font-weight-bold">
-                                                    @if(strtolower($question->session->type->name) == 'epps')
-                                                        {{ $choice->choice . '. ' . $choice->value }}
-                                                    @else
+                                        @if($question->session->type->slug == 'cfit' && $question->session->session == 2)
+                                            <div class="form-check mb-0">
+                                                <label class="form-check-label">
+                                                    <input
+                                                        class="form-check-input checkbox-option"
+                                                        type="checkbox"
+                                                        name="answers[{{ $key }}][{{ $keyChoice }}]"
+                                                        {{
+                                                            ((is_array(old('answers'))
+                                                            && array_key_exists($key, old('answers', [])))
+                                                            && array_key_exists($keyChoice, old('answers', [])[$key]))
+                                                            && $choice->choice == old('answers', [])[$key][$keyChoice]
+                                                            ? ' checked'
+                                                            : ''
+                                                        }}
+                                                        value="{{ $choice->choice }}"
+                                                    >
+                                                    <span class="form-check-sign"></span>
+                                                    <p class="font-weight-bold">
                                                         {{ $choice->choice }}
-                                                    @endif
-                                                </p>
-                                            </label>
-                                        </div>
+                                                    </p>
+                                                </label>
+                                            </div>
+                                        @else
+                                            <div class="form-check form-check-radio mb-0">
+                                                <label class="form-check-label">
+                                                    <input
+                                                        class="form-check-input radio-option"
+                                                        type="radio"
+                                                        name="answers[{{ $key }}]"
+                                                        {{
+                                                            (is_array(old('answers'))
+                                                            && array_key_exists($key, old('answers', [])))
+                                                            && $choice->choice == old('answers', [])[$key]
+                                                            ? ' checked'
+                                                            : ''
+                                                        }}
+                                                        value="{{ $choice->choice }}"
+                                                    >
+                                                    <span class="form-check-sign"></span>
+                                                    <p class="font-weight-bold">
+                                                        {{
+                                                            strtolower($question->session->type->slug) == 'epps'
+                                                            ? $choice->choice . '. ' . $choice->value
+                                                            : $choice->choice
+                                                        }}
+                                                    </p>
+                                                </label>
+                                            </div>
+                                        @endif
                                     </div>
                                 </td>
                             </tr>
@@ -152,5 +189,35 @@
                 document.forms["testForm"].submit();
             }
         }, 1000)
+
+        //Limiting checkbox
+        const limit = 2
+        const dictionary = Array({!! json_encode(count($questions)) !!}).fill(0)
+        $('.checkbox-option').on('change', function (e) {
+            const nameInput = $(this).attr('name')
+            const split_name = nameInput.split('[')
+            const question_order = parseInt(split_name[1].charAt(0));
+
+            if ($('input[name="answers['+ question_order +'][]"][type=checkbox]:checked').length > limit && dictionary[question_order] >= limit) {
+                $(this).prop('checked', false);
+            }else{
+                if($(this).is(':checked')) {
+                    dictionary[question_order]++;
+                }
+                else {
+                    dictionary[question_order]--;
+                }
+            }
+        });
+
+        $('.radio-option').on('change', function (e) {
+            const nameInput = $(this).attr('name')
+            const split_name = nameInput.split('[')
+            const question_order = parseInt(split_name[1].charAt(0));
+            const value = $(this).val()
+
+            // old_answers.push(val)
+            console.log(old_answers)
+        });
     </script>
 @endpush

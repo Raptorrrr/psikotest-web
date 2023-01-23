@@ -1,6 +1,7 @@
 @extends('pages.test.test-layout', ['activePage' => 'test', 'title' => 'Psikotes Biromarini', 'navName' => 'Test', 'activeButton' => 'test'])
 
 @section('content')
+    <div class="container">
     <h2 class="font-weight-bold text-center mb-0 mt-3">{{ 'PSIKOTES ' . $session->type->order . ' SUBTEST ' . $session->session }}</h2>
     @if($session->image !== null)
         <div class="rules-image text-center my-5">
