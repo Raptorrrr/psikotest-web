@@ -2,11 +2,8 @@
 
 @section('content')
 <div class="content">
-<<<<<<< HEAD
+
     <div class="container">
-        pp
-=======
-    <div class="container-fluid">
         <h2 class="text-center">Peraturan Dalam Pelaksanaan Psikotes</h2>
         <div class="rules">
             <div>1. Peserta diwajibkan menyediakan 1 HP dan 1 Laptop untuk pelaksanaan tes.</div>
@@ -20,10 +17,9 @@
             <div>9. Jawaban akan tersimpan otomatis jika waktu habis atau saat selesai mengerjakan.</div>
             <div>10. Jika Peserta melanggar salah satu peraturan Psikotes maka dianggap gugur.</div>
         </div>
-        <div class="text-center">
+        <div class="text-center my-5">
             <a type="button" class="btn btn-main btn-fill" href="{{ route('test.intro', ['slug' => $firstTypeSlug, 'session' => $firstSessionId]) }}">Mulai Tes</a>
         </div>
->>>>>>> f37ca6928f5e23e5e46d309420bcd74c2371366b
     </div>
 </div>
 @endsection
