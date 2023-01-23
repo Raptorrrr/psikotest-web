@@ -34,14 +34,14 @@ Tip 2: you can also add an image using data-image tag
                     </a>
                     <div class="collapse @if($activeButton == 'setting') show @endif" id="laravelExamples">
                         <ul class="nav">
-                            <li class="nav-item @if($activePage == 'user') active @endif">
+                            <li class="nav-item @if($activePage == 'setting') active @endif">
                                 <a class="nav-link" href="{{route('setting.session.index')}}">
                                     <i class="nc-icon nc-single-copy-04"></i>
                                     <p>{{ __("Kelola Soal") }}</p>
                                 </a>
                             </li>
                             <li class="nav-item @if($activePage == 'user-management') active @endif">
-                                <a class="nav-link" href="{{route('setting.type.index')}}">
+                                <a class="nav-link" href="{{route('setting.user.index')}}">
                                     <i class="nc-icon nc-single-02"></i>
                                     <p>{{ __("Kelola User") }}</p>
                                 </a>

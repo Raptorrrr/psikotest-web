@@ -85,6 +85,10 @@ a, a:hover, a:focus {
     color: #FFFFFF;
 }
 
+.alert-info {
+    background-color: #9368E9;
+}
+
 /* Pagination */
 .page-link {
     color: #9368E9;
