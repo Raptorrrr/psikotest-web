@@ -67,7 +67,7 @@
                                             <table class="table table-bordered mx-auto" style="width: 50%">
                                                 <tr>
                                                     <th colspan="{{ count($question->choices) }}">
-                                                        Kolom {{ floor($question->order / 11) + 1 }}
+                                                        Kolom {{ (floor(($question->order - 1) / 10)) + 1 }}
                                                     </th>
                                                 </tr>
                                                 <tr>
