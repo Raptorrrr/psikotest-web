@@ -1,4 +1,4 @@
-@extends('layouts.app', ['activePage' => 'history-test', 'title' => 'Psikotes Biromarini', 'navName' => 'result', 'activeButton' => 'result'])
+@extends('layouts.app', ['activePage' => 'history-test', 'title' => 'Psikotes Biromarini', 'navName' => 'History Test', 'activeButton' => 'result'])
 
 @section('content')
     <div class="container-fluid">
