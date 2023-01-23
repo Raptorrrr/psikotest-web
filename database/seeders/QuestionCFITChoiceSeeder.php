@@ -22,9 +22,9 @@ class QuestionCFITChoiceSeeder extends Seeder
             ['A', 'B', 'C', 'D', 'E']
         ];
 
-        $order = [0, 1, 2, 3, 4, 5];
+        $order = [1, 2, 3, 4, 5, 6];
 
-        for ($id_soal = 0; $id_soal < 50; $id_soal++) {
+        for ($id_soal = 1; $id_soal <= 50; $id_soal++) {
             if ($id_soal < 13) {
                 $this->storeData($id_soal, $pilihan, 0, $order);
             } else if ($id_soal >= 13 && $id_soal < 28) {
@@ -43,10 +43,10 @@ class QuestionCFITChoiceSeeder extends Seeder
     {
         for ($pil = 0; $pil < count($pilihan[$urutanPil]); $pil++) {
             $questions = [
-                'question_id' => $id_soal + 1,
+                'question_id' => $id_soal,
                 'choice' => $pilihan[$urutanPil][$pil],
                 'value' => $pilihan[$urutanPil][$pil],
-                'order'  => $order[$pil] + 1,
+                'order'  => $order[$pil],
             ];
             QuestionChoice::query()->create($questions);
         }
