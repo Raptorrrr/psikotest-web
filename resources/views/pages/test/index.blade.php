@@ -51,7 +51,7 @@
                                     @if($question->question === null)
                                         @if($question->is_import === 1)
                                             <img
-                                                src="{{ asset('images/' . $question->session->type->name . '/' . $question->session->session . '/' . $question->id . '.png') }}"
+                                                src="{{ asset('images/' . $question->session->type->slug . '/' . $question->session->session . '/' . $question->id . '.png') }}"
                                                 style="max-height: 500px;"
                                                 alt="question_image"
                                             >
