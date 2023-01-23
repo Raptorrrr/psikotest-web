@@ -117,10 +117,17 @@ class UserAnswerController extends Controller
     protected function storeHistoryTest(int $user_id, int $session_id, array $data): void
     {
         $correct_answer = 0;
-        foreach ($data['answers'] as $key => $answer) {
-            $question_answer = Question::query()->where('id', $data['question'][$key])->first()->correct_answer;
-            if (in_array($answer, $question_answer))
-                $correct_answer++;
+        $wrong_answer = 0;
+
+        $session = Session::query()->where('id', $session_id)->first();
+
+        if ($session->type->slug !== 'epps') {
+            foreach ($data['answers'] as $key => $answer) {
+                $question_answer = Question::query()->where('id', $data['question'][$key])->first()->correct_answer;
+                if (in_array($answer, $question_answer))
+                    $correct_answer++;
+            }
+            $wrong_answer = count($data['question']) - $correct_answer;
         }
 
         HistoryTest::query()
@@ -128,7 +135,7 @@ class UserAnswerController extends Controller
             ->where('session_id', $session_id)
             ->update([
                 'correct_answer' => $correct_answer,
-                'wrong_answer' => count($data['question']) - $correct_answer,
+                'wrong_answer' => $wrong_answer,
                 'finish_at' => now()
             ]);
     }
