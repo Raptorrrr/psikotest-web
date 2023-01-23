@@ -9,7 +9,7 @@
                     @csrf
                     <div class="card card-login card-hidden">
                         <div class="card-header ">
-                            <h3 class="header text-center">{{ __('Login Psikotest') }}</h3>
+                            <h3 class="header text-center">{{ __('Login Psikotes') }}</h3>
                         </div>
                         <div class="card-body ">
                             <div class="card-body">
