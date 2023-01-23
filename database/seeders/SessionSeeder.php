@@ -69,7 +69,7 @@ class SessionSeeder extends Seeder
             [
                 'type_id' => '2',
                 'session' => '1',
-                'time'  =>  '1800',
+                'time'  =>  '900',
                 'count_answer' => '1',
                 'intro' => '<p>Pada PSIKOTES 2 terdapat 3 SUBTES yang akan dikerjakan. Kerjakan tes dengan memilih angka, huruf, dan simbol yang hilang atau yang tidak terdapat pada kolom.</p>
                 <p>Selamat Mengerjakan!</p>'
@@ -77,14 +77,14 @@ class SessionSeeder extends Seeder
             [
                 'type_id' => '2',
                 'session' => '2',
-                'time'  => '1800',
+                'time'  => '900',
                 'count_answer' => '1',
                 'intro' => '<p>Kerjakan tes dengan memilih angka, huruf, dan simbol yang hilang atau yang tidak terdapat pada kolom.</p>'
             ],
             [
                 'type_id' => '2',
                 'session' => '3',
-                'time'  => '1800',
+                'time'  => '900',
                 'count_answer' => '1',
                 'intro' => '<p>Kerjakan tes dengan memilih angka, huruf, dan simbol yang hilang atau yang tidak terdapat pada kolom.</p>'
             ],
