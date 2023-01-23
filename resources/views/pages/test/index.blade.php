@@ -101,7 +101,7 @@
                                             <div class="form-check mb-0">
                                                 <label class="form-check-label">
                                                     <input
-                                                        class="form-check-input checkbox-option"
+                                                        class="form-check-input checkbox-option checkbox-order-{{ $key }}"
                                                         type="checkbox"
                                                         name="answers[{{ $key }}][{{ $keyChoice }}]"
                                                         {{
@@ -196,16 +196,16 @@
         $('.checkbox-option').on('change', function (e) {
             const nameInput = $(this).attr('name')
             const split_name = nameInput.split('[')
-            const question_order = parseInt(split_name[1].charAt(0));
+            const key_order = parseInt(split_name[1].charAt(0));
 
-            if ($('input[name="answers['+ question_order +'][]"][type=checkbox]:checked').length > limit && dictionary[question_order] >= limit) {
+            if ($('.checkbox-order-'+ key_order +':checked').length > limit && dictionary[key_order] >= limit) {
                 $(this).prop('checked', false);
             }else{
                 if($(this).is(':checked')) {
-                    dictionary[question_order]++;
+                    dictionary[key_order]++;
                 }
                 else {
-                    dictionary[question_order]--;
+                    dictionary[key_order]--;
                 }
             }
         });
