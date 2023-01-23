@@ -56,7 +56,7 @@ class SessionSeeder extends Seeder
             [
                 'type_id' => '1',
                 'session' => '4',
-                'time'  => '210',
+                'time'  => '150',
                 'count_answer' => '1',
                 'is_import' => 1,
                 'intro' => '<p>Pada SUBTES 4 terdapat 1 kotak di sebelah kiri dan 5 kotak di sebelah kanan, pada kotak sebelah kiri terdapat titik yang berada pada gambar. Tugas Anda adalah memilih 1 jawaban yang tepat diantara 5 kotak di sebelah kanan yang mungkin diletakkan titik seperti gambar pada kotak di sebelah kiri. </p>
