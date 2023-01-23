@@ -87,11 +87,12 @@ class UserAnswerController extends Controller
             ->where('session', $session + 1)->first();
 
         $nextSlugType = $slug;
+        $isLastTest = 0;
         if ($nextOrderSession === null) {
             $typeOrder = Type::query()->where('slug', $slug)->first()->order;
             $nextSlugType = Type::query()->where('order', $typeOrder + 1)->first();
             if ($nextSlugType === null)
-                return redirect()->route('test.finish');
+                $isLastTest = 1;
             else
                 $nextSlugType = $nextSlugType->slug;
             $nextOrderSession = 1;
@@ -130,7 +131,7 @@ class UserAnswerController extends Controller
 
         $this->storeHistoryTest(auth()->user()->id, $sessionModel->id, $newRequest);
 
-        return redirect()->route('test.intro', ['slug' => $nextSlugType, 'session' => $nextOrderSession]);
+        return $isLastTest ? redirect()->route('test.finish') : redirect()->route('test.intro', ['slug' => $nextSlugType, 'session' => $nextOrderSession]);
     }
 
     protected function storeHistoryTest(int $user_id, int $session_id, array $data): void
