@@ -35,7 +35,7 @@ class UserAnswerController extends Controller
         return view('pages.test.intro', [
             'slug' => $slug,
             'session' => Session::query()
-                ->whereHas('type', fn($q) => $q->where('slug', $slug))
+                ->whereHas('type', fn ($q) => $q->where('slug', $slug))
                 ->where('session', $session)->first(),
         ]);
     }
@@ -49,7 +49,7 @@ class UserAnswerController extends Controller
     {
         $session = Session::query()
             ->where('session', $session)
-            ->whereHas('type', fn($q) => $q->where('slug', $slug))
+            ->whereHas('type', fn ($q) => $q->where('slug', $slug))
             ->first();
 
         $historyTest = HistoryTest::query()->create([
@@ -79,13 +79,12 @@ class UserAnswerController extends Controller
 
         $filtered = $request->is_expired == 0 ? $request->validate($this->rules($sessionModel->questions->count()), $this->rulesMessage()) : $request->all();
 
-        if($request['answers'] === null) {
+        if ($request['answers'] === null) {
             $filtered['answers'] = [];
             $newRequest['answers'] = [];
         }
 
-        foreach ($filtered['answers'] as $key => $answer)
-        {
+        foreach ($filtered['answers'] as $key => $answer) {
             UserAnswer::query()->create([
                 'user_id' => auth()->user()->id,
                 'question_id' => $request['question'][$key],
@@ -100,26 +99,27 @@ class UserAnswerController extends Controller
             ->where('session', $session + 1)->first();
 
         $nextSlugType = $slug;
-        if($nextOrderSession === null) {
+        if ($nextOrderSession === null) {
             $typeOrder = Type::query()->where('slug', $slug)->first()->order;
             $nextSlugType = Type::query()->where('order', $typeOrder + 1)->first();
-            if($nextSlugType === null)
+            if ($nextSlugType === null)
                 return redirect()->route('test.finish');
+            else
+                $nextSlugType = $nextSlugType->slug;
             $nextOrderSession = 1;
-        }else {
+        } else {
             $nextOrderSession = $nextOrderSession->session;
         }
 
-        return redirect()->route('test.intro', ['slug' => $nextSlugType->slug, 'session' => $nextOrderSession]);
+        return redirect()->route('test.intro', ['slug' => $nextSlugType, 'session' => $nextOrderSession]);
     }
 
     protected function storeHistoryTest(int $user_id, int $session_id, array $data): void
     {
         $correct_answer = 0;
-        foreach ($data['answers'] as $key => $answer)
-        {
+        foreach ($data['answers'] as $key => $answer) {
             $question_answer = Question::query()->where('id', $data['question'][$key])->first()->correct_answer;
-            if(in_array($answer, $question_answer))
+            if (in_array($answer, $question_answer))
                 $correct_answer++;
         }
 
