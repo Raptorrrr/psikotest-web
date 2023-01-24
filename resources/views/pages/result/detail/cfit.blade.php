@@ -32,6 +32,10 @@
         @endforeach
       </tbody>
     </table>
+
+      <div class="pull-right">
+          {{ $histories->links("pagination::bootstrap-4") }}
+      </div>
   </div>
 </div>
 @endsection

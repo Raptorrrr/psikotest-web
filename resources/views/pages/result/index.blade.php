@@ -38,6 +38,10 @@
                             @endforeach
                             </tbody>
                         </table>
+
+                        <div class="pull-right">
+                            {{ $users->links("pagination::bootstrap-4") }}
+                        </div>
                     </div>
                 </div>
             </div>
