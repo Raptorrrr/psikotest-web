@@ -29,7 +29,7 @@ class HistoryTestController extends Controller
             'user' => $user,
             'histories' => HistoryTest::query()->where('user_id', $user->id)->whereHas('session.type', function ($q) {
                 $q->where('name', 'CFIT');
-            })->get()
+            })->paginate(10)->withQueryString()
         ]);
     }
 
@@ -39,7 +39,7 @@ class HistoryTestController extends Controller
             'user' => $user,
             'histories' => HistoryTest::query()->where('user_id', $user->id)->whereHas('session.type', function ($q) {
                 $q->where('name', 'SKB');
-            })->get()
+            })->paginate(10)->withQueryString()
         ]);
     }
 
@@ -55,7 +55,7 @@ class HistoryTestController extends Controller
             })->get(),
             'answers' => UserAnswer::query()->where('user_id', $user->id)->whereHas('question.session.type', function ($q1) {
                 $q1->where('name', 'EPPS');
-            })->paginate(25)
+            })->paginate(10)->withQueryString()
         ]);
     }
 }
